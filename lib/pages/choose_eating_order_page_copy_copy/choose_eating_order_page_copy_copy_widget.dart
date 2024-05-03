@@ -974,7 +974,8 @@ class _ChooseEatingOrderPageCopyCopyWidgetState
                                                         0.0, 10.0, 0.0, 0.0),
                                                 child: FFButtonWidget(
                                                   onPressed: () {
-                                                    print('Button pressed ...');
+                                                    print(
+                                                        'OkButton pressed ...');
                                                   },
                                                   text: 'TAMAM',
                                                   options: FFButtonOptions(
@@ -1135,17 +1136,38 @@ class _ChooseEatingOrderPageCopyCopyWidgetState
                                                                     0.0,
                                                               ),
                                                         ),
-                                                        Text(
-                                                          'Hello World',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
+                                                        Builder(
+                                                          builder: (context) {
+                                                            final orderList =
+                                                                FFAppState()
+                                                                    .order
+                                                                    .toList();
+                                                            return Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: List.generate(
+                                                                  orderList
+                                                                      .length,
+                                                                  (orderListIndex) {
+                                                                final orderListItem =
+                                                                    orderList[
+                                                                        orderListIndex];
+                                                                return Text(
+                                                                  'Hello World',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Readex Pro',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
+                                                                );
+                                                              }),
+                                                            );
+                                                          },
                                                         ),
                                                       ],
                                                     ),
