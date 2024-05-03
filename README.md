@@ -1,2 +1,7 @@
-# mainappforcafes
-i made a main app to sell cafes...
+# NarinCafeApp
+
+A new Flutter project.
+
+## Getting Started
+
+FlutterFlow projects are built to run on the Flutter _stable_ release.
