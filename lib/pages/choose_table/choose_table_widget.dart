@@ -107,135 +107,170 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                       child: Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            context.pushNamed('ChooseEatingOrderPageCopyCopy');
-
-                            setState(() {
-                              FFAppState().tableNumber = 1;
-                            });
-                          },
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Align(
-                                alignment: const AlignmentDirectional(0.0, -1.0),
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 7.0, 0.0, 0.0),
-                                  child: Container(
-                                    width: 75.0,
-                                    height: 75.0,
-                                    clipBehavior: Clip.antiAlias,
-                                    decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Image.network(
-                                      'https://picsum.photos/seed/640/600',
-                                      fit: BoxFit.cover,
+                        child: StreamBuilder<List<TablesRecord>>(
+                          stream: queryTablesRecord(
+                            singleRecord: true,
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      FlutterFlowTheme.of(context).primary,
                                     ),
                                   ),
                                 ),
-                              ),
-                              Text(
-                                'MASA 1',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
+                              );
+                            }
+                            List<TablesRecord> columnTablesRecordList =
+                                snapshot.data!;
+                            // Return an empty Container when the item does not exist.
+                            if (snapshot.data!.isEmpty) {
+                              return Container();
+                            }
+                            final columnTablesRecord =
+                                columnTablesRecordList.isNotEmpty
+                                    ? columnTablesRecordList.first
+                                    : null;
+                            return InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                setState(() {
+                                  FFAppState().tableAccount =
+                                      columnTablesRecord!.table1;
+                                });
+
+                                context.pushNamed(
+                                  'ChooseEatingOrderPageCopyCopy',
+                                  queryParameters: {
+                                    'pageCost': serializeParam(
+                                      FFAppState().tableAccount,
+                                      ParamType.double,
                                     ),
-                              ),
-                              Row(
+                                  }.withoutNulls,
+                                );
+
+                                setState(() {
+                                  FFAppState().tableNumber = 1;
+                                });
+                              },
+                              child: Column(
                                 mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 7.0),
-                                    child: StreamBuilder<List<TablesRecord>>(
-                                      stream: queryTablesRecord(
-                                        singleRecord: true,
+                                  Align(
+                                    alignment: const AlignmentDirectional(0.0, -1.0),
+                                    child: Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 7.0, 0.0, 0.0),
+                                      child: Container(
+                                        width: 75.0,
+                                        height: 75.0,
+                                        clipBehavior: Clip.antiAlias,
+                                        decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: Image.network(
+                                          'https://picsum.photos/seed/640/600',
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: CircularProgressIndicator(
-                                                valueColor:
-                                                    AlwaysStoppedAnimation<
-                                                        Color>(
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                                ),
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<TablesRecord>
-                                            textTablesRecordList =
-                                            snapshot.data!;
-                                        // Return an empty Container when the item does not exist.
-                                        if (snapshot.data!.isEmpty) {
-                                          return Container();
-                                        }
-                                        final textTablesRecord =
-                                            textTablesRecordList.isNotEmpty
-                                                ? textTablesRecordList.first
-                                                : null;
-                                        return InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            setState(() {
-                                              FFAppState().tableAccount =
-                                                  valueOrDefault<int>(
-                                                FFAppState().tableAccount,
-                                                0,
-                                              );
-                                            });
-                                          },
-                                          child: Text(
-                                            valueOrDefault<String>(
-                                              textTablesRecord?.table1
-                                                  .toString(),
-                                              '0',
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Readex Pro',
-                                                  letterSpacing: 0.0,
-                                                ),
-                                          ),
-                                        );
-                                      },
                                     ),
                                   ),
                                   Text(
-                                    ' ₺',
+                                    'MASA 1',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
                                           letterSpacing: 0.0,
+                                          fontWeight: FontWeight.bold,
                                         ),
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 7.0),
+                                        child:
+                                            StreamBuilder<List<TablesRecord>>(
+                                          stream: queryTablesRecord(
+                                            singleRecord: true,
+                                          ),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 50.0,
+                                                  height: 50.0,
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    valueColor:
+                                                        AlwaysStoppedAnimation<
+                                                            Color>(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            }
+                                            List<TablesRecord>
+                                                textTablesRecordList =
+                                                snapshot.data!;
+                                            // Return an empty Container when the item does not exist.
+                                            if (snapshot.data!.isEmpty) {
+                                              return Container();
+                                            }
+                                            final textTablesRecord =
+                                                textTablesRecordList.isNotEmpty
+                                                    ? textTablesRecordList.first
+                                                    : null;
+                                            return Text(
+                                              valueOrDefault<String>(
+                                                textTablesRecord?.table1
+                                                    .toString(),
+                                                '0',
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                      Text(
+                                        ' ₺',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
-                            ],
-                          ),
+                            );
+                          },
                         ),
                       ),
                     ),

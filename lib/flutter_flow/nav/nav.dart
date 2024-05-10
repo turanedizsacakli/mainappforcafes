@@ -124,6 +124,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'AddProduct',
           path: '/addProduct',
           builder: (context, params) => const AddProductWidget(),
+        ),
+        FFRoute(
+          name: 'deneme',
+          path: '/deneme',
+          builder: (context, params) => const DenemeWidget(),
+        ),
+        FFRoute(
+          name: 'denemeCopy',
+          path: '/denemeCopy',
+          builder: (context, params) => const DenemeCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -310,4 +320,14 @@ class RootPageContext {
         value: RootPageContext(true, errorRoute),
         child: child,
       );
+}
+
+extension GoRouterLocationExtension on GoRouter {
+  String getCurrentLocation() {
+    final RouteMatch lastMatch = routerDelegate.currentConfiguration.last;
+    final RouteMatchList matchList = lastMatch is ImperativeRouteMatch
+        ? lastMatch.matches
+        : routerDelegate.currentConfiguration;
+    return matchList.uri.toString();
+  }
 }

@@ -348,7 +348,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ),
               FFButtonWidget(
                 onPressed: () async {
-                  context.pushNamed('AddProduct');
+                  context.pushNamed('deneme');
                 },
                 text: 'Button',
                 options: FFButtonOptions(

@@ -32,9 +32,6 @@ class FFAppState extends ChangeNotifier {
       _account = prefs.getInt('ff_account') ?? _account;
     });
     _safeInit(() {
-      _tableAccount = prefs.getInt('ff_tableAccount') ?? _tableAccount;
-    });
-    _safeInit(() {
       _baslangiclar = prefs.getStringList('ff_baslangiclar') ?? _baslangiclar;
     });
     _safeInit(() {
@@ -51,6 +48,17 @@ class FFAppState extends ChangeNotifier {
     });
     _safeInit(() {
       _anaYemekler = prefs.getStringList('ff_anaYemekler') ?? _anaYemekler;
+    });
+    _safeInit(() {
+      _tableAccount = prefs.getDouble('ff_tableAccount') ?? _tableAccount;
+    });
+    _safeInit(() {
+      _deneme = prefs.getStringList('ff_deneme') ?? _deneme;
+    });
+    _safeInit(() {
+      _denemeCost =
+          prefs.getStringList('ff_denemeCost')?.map(double.parse).toList() ??
+              _denemeCost;
     });
   }
 
@@ -122,13 +130,6 @@ class FFAppState extends ChangeNotifier {
   set account(int value) {
     _account = value;
     prefs.setInt('ff_account', value);
-  }
-
-  int _tableAccount = 0;
-  int get tableAccount => _tableAccount;
-  set tableAccount(int value) {
-    _tableAccount = value;
-    prefs.setInt('ff_tableAccount', value);
   }
 
   List<String> _featuresListState = [];
@@ -406,6 +407,89 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInAnaYemekler(int index, String value) {
     _anaYemekler.insert(index, value);
     prefs.setStringList('ff_anaYemekler', _anaYemekler);
+  }
+
+  double _tableAccount = 0.0;
+  double get tableAccount => _tableAccount;
+  set tableAccount(double value) {
+    _tableAccount = value;
+    prefs.setDouble('ff_tableAccount', value);
+  }
+
+  List<String> _deneme = [];
+  List<String> get deneme => _deneme;
+  set deneme(List<String> value) {
+    _deneme = value;
+    prefs.setStringList('ff_deneme', value);
+  }
+
+  void addToDeneme(String value) {
+    _deneme.add(value);
+    prefs.setStringList('ff_deneme', _deneme);
+  }
+
+  void removeFromDeneme(String value) {
+    _deneme.remove(value);
+    prefs.setStringList('ff_deneme', _deneme);
+  }
+
+  void removeAtIndexFromDeneme(int index) {
+    _deneme.removeAt(index);
+    prefs.setStringList('ff_deneme', _deneme);
+  }
+
+  void updateDenemeAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    _deneme[index] = updateFn(_deneme[index]);
+    prefs.setStringList('ff_deneme', _deneme);
+  }
+
+  void insertAtIndexInDeneme(int index, String value) {
+    _deneme.insert(index, value);
+    prefs.setStringList('ff_deneme', _deneme);
+  }
+
+  List<double> _denemeCost = [];
+  List<double> get denemeCost => _denemeCost;
+  set denemeCost(List<double> value) {
+    _denemeCost = value;
+    prefs.setStringList(
+        'ff_denemeCost', value.map((x) => x.toString()).toList());
+  }
+
+  void addToDenemeCost(double value) {
+    _denemeCost.add(value);
+    prefs.setStringList(
+        'ff_denemeCost', _denemeCost.map((x) => x.toString()).toList());
+  }
+
+  void removeFromDenemeCost(double value) {
+    _denemeCost.remove(value);
+    prefs.setStringList(
+        'ff_denemeCost', _denemeCost.map((x) => x.toString()).toList());
+  }
+
+  void removeAtIndexFromDenemeCost(int index) {
+    _denemeCost.removeAt(index);
+    prefs.setStringList(
+        'ff_denemeCost', _denemeCost.map((x) => x.toString()).toList());
+  }
+
+  void updateDenemeCostAtIndex(
+    int index,
+    double Function(double) updateFn,
+  ) {
+    _denemeCost[index] = updateFn(_denemeCost[index]);
+    prefs.setStringList(
+        'ff_denemeCost', _denemeCost.map((x) => x.toString()).toList());
+  }
+
+  void insertAtIndexInDenemeCost(int index, double value) {
+    _denemeCost.insert(index, value);
+    prefs.setStringList(
+        'ff_denemeCost', _denemeCost.map((x) => x.toString()).toList());
   }
 }
 
