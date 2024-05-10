@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'choose_eating_order_page_copy_copy_widget.dart'
@@ -20,24 +21,15 @@ class ChooseEatingOrderPageCopyCopyModel
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
 
-  // State field(s) for CheckboxGroup widget.
-  List<String>? checkboxGroupValues1;
-  FormFieldController<List<String>>? checkboxGroupValueController1;
-  // State field(s) for CheckboxGroup widget.
-  List<String>? checkboxGroupValues2;
-  FormFieldController<List<String>>? checkboxGroupValueController2;
-  // State field(s) for CheckboxGroup widget.
-  List<String>? checkboxGroupValues3;
-  FormFieldController<List<String>>? checkboxGroupValueController3;
-  // State field(s) for CheckboxGroup widget.
-  List<String>? checkboxGroupValues4;
-  FormFieldController<List<String>>? checkboxGroupValueController4;
-  // State field(s) for CheckboxGroup widget.
-  List<String>? checkboxGroupValues5;
-  FormFieldController<List<String>>? checkboxGroupValueController5;
-  // State field(s) for CheckboxGroup widget.
-  List<String>? checkboxGroupValues6;
-  FormFieldController<List<String>>? checkboxGroupValueController6;
+  // State field(s) for CheckboxListTile widget.
+
+  Map<MealsRecord, bool> checkboxListTileValueMap = {};
+  List<MealsRecord> get checkboxListTileCheckedItems =>
+      checkboxListTileValueMap.entries
+          .where((e) => e.value)
+          .map((e) => e.key)
+          .toList();
+
   // State field(s) for mealDropDown widget.
   String? mealDropDownValue1;
   FormFieldController<String>? mealDropDownValueController1;

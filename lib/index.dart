@@ -8,12 +8,14 @@ export '/backup/choose_drinking_order_page/choose_drinking_order_page_widget.dar
 export '/pages/choose_table/choose_table_widget.dart' show ChooseTableWidget;
 export '/pages/admin_order_page/admin_order_page_widget.dart'
     show AdminOrderPageWidget;
-export '/pages/choose_eating_order_page/choose_eating_order_page_widget.dart'
+export '/backup/choose_eating_order_page/choose_eating_order_page_widget.dart'
     show ChooseEatingOrderPageWidget;
 export '/backup/choose_eating_order_page_copy2/choose_eating_order_page_copy2_widget.dart'
     show ChooseEatingOrderPageCopy2Widget;
-export '/pages/choose_eating_order_page_copy/choose_eating_order_page_copy_widget.dart'
+export '/backup/choose_eating_order_page_copy/choose_eating_order_page_copy_widget.dart'
     show ChooseEatingOrderPageCopyWidget;
 export '/pages/choose_eating_order_page_copy_copy/choose_eating_order_page_copy_copy_widget.dart'
     show ChooseEatingOrderPageCopyCopyWidget;
 export '/add_product/add_product_widget.dart' show AddProductWidget;
+export '/deneme/deneme_widget.dart' show DenemeWidget;
+export '/deneme_copy/deneme_copy_widget.dart' show DenemeCopyWidget;
