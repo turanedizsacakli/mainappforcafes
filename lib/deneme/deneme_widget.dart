@@ -1,4 +1,3 @@
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -63,231 +62,116 @@ class _DenemeWidgetState extends State<DenemeWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                child: StreamBuilder<List<MealsRecord>>(
-                  stream: queryMealsRecord(),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
-                          child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              FlutterFlowTheme.of(context).primary,
-                            ),
-                          ),
+          child: Align(
+            alignment: const AlignmentDirectional(0.0, -1.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                        child: Builder(
+                          builder: (context) {
+                            final liste = FFAppState().pageCost.toList();
+                            return Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children:
+                                  List.generate(liste.length, (listeIndex) {
+                                final listeItem = liste[listeIndex];
+                                return Text(
+                                  listeItem.toString(),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                      ),
+                                );
+                              }),
+                            );
+                          },
                         ),
-                      );
-                    }
-                    List<MealsRecord> columnMealsRecordList = snapshot.data!;
-                    return Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: List.generate(columnMealsRecordList.length,
-                          (columnIndex) {
-                        final columnMealsRecord =
-                            columnMealsRecordList[columnIndex];
-                        return Theme(
-                          data: ThemeData(
-                            checkboxTheme: const CheckboxThemeData(
-                              visualDensity: VisualDensity.compact,
-                              materialTapTargetSize:
-                                  MaterialTapTargetSize.shrinkWrap,
-                            ),
-                            unselectedWidgetColor:
-                                FlutterFlowTheme.of(context).secondaryText,
-                          ),
-                          child: CheckboxListTile(
-                            value: _model.checkboxListTileValueMap[
-                                columnMealsRecord] ??= false,
-                            onChanged: (newValue) async {
-                              setState(() => _model.checkboxListTileValueMap[
-                                  columnMealsRecord] = newValue!);
-                              if (newValue!) {
-                                setState(() {
-                                  FFAppState().deneme = _model
-                                      .checkboxListTileCheckedItems
-                                      .map((e) => e.mealName)
-                                      .toList()
-                                      .cast<String>();
-                                  FFAppState().denemeCost = _model
-                                      .checkboxListTileCheckedItems
-                                      .map((e) => e.mealCost)
-                                      .toList()
-                                      .cast<double>();
-                                });
-                              }
-                            },
-                            title: Text(
-                              columnMealsRecord.mealName,
-                              style: FlutterFlowTheme.of(context)
-                                  .titleLarge
-                                  .override(
-                                    fontFamily: 'Outfit',
-                                    letterSpacing: 0.0,
-                                  ),
-                            ),
-                            subtitle: Text(
-                              columnMealsRecord.mealCost.toString(),
-                              style: FlutterFlowTheme.of(context)
-                                  .labelMedium
-                                  .override(
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                        child: Text(
+                          FFAppState().denemeTotal.toString(),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',
                                     letterSpacing: 0.0,
                                   ),
-                            ),
-                            tileColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            activeColor: FlutterFlowTheme.of(context).primary,
-                            checkColor: FlutterFlowTheme.of(context).info,
-                            dense: false,
-                            controlAffinity: ListTileControlAffinity.trailing,
-                          ),
-                        );
-                      }),
-                    );
-                  },
-                ),
-              ),
-              Builder(
-                builder: (context) {
-                  final xxx = FFAppState().deneme.toList();
-                  return Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: List.generate(xxx.length, (xxxIndex) {
-                      final xxxItem = xxx[xxxIndex];
-                      return Text(
-                        xxxItem,
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Readex Pro',
-                              fontSize: 20.0,
-                              letterSpacing: 0.0,
-                            ),
-                      );
-                    }),
-                  );
-                },
-              ),
-              Builder(
-                builder: (context) {
-                  final ccc = FFAppState().denemeCost.toList();
-                  return Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: List.generate(ccc.length, (cccIndex) {
-                      final cccItem = ccc[cccIndex];
-                      return Text(
-                        cccItem.toString(),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Readex Pro',
-                              fontSize: 20.0,
-                              letterSpacing: 0.0,
-                            ),
-                      );
-                    }),
-                  );
-                },
-              ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-                child: StreamBuilder<List<MealsRecord>>(
-                  stream: queryMealsRecord(),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
-                          child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              FlutterFlowTheme.of(context).primary,
-                            ),
-                          ),
                         ),
-                      );
-                    }
-                    List<MealsRecord> buttonMealsRecordList = snapshot.data!;
-                    return FFButtonWidget(
-                      onPressed: () async {
-                        await queryMealsRecordOnce();
-                      },
-                      text: 'ata',
-                      options: FFButtonOptions(
-                        height: 40.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            24.0, 0.0, 24.0, 0.0),
-                        iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Readex Pro',
-                                  color: Colors.white,
-                                  letterSpacing: 0.0,
-                                ),
-                        elevation: 3.0,
-                        borderSide: const BorderSide(
-                          color: Colors.transparent,
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(8.0),
                       ),
-                    );
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
-                child: FFButtonWidget(
-                  onPressed: () async {
-                    setState(() {
-                      FFAppState().deneme = [];
-                      FFAppState().denemeCost = [];
-                    });
-                  },
-                  text: 'sıfırla',
-                  options: FFButtonOptions(
-                    height: 40.0,
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                    iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).primary,
-                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Readex Pro',
-                          color: Colors.white,
-                          letterSpacing: 0.0,
-                        ),
-                    elevation: 3.0,
-                    borderSide: const BorderSide(
-                      color: Colors.transparent,
-                      width: 1.0,
-                    ),
-                    borderRadius: BorderRadius.circular(8.0),
+                    ],
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text(
-                      'Hello World',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Readex Pro',
-                            letterSpacing: 0.0,
-                          ),
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                  child: FFButtonWidget(
+                    onPressed: () {
+                      print('Button pressed ...');
+                    },
+                    text: 'toplam',
+                    options: FFButtonOptions(
+                      height: 40.0,
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                      iconPadding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).primary,
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
+                                fontFamily: 'Readex Pro',
+                                color: Colors.white,
+                                letterSpacing: 0.0,
+                              ),
+                      elevation: 3.0,
+                      borderSide: const BorderSide(
+                        color: Colors.transparent,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(8.0),
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ],
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                  child: FFButtonWidget(
+                    onPressed: () {
+                      print('Button pressed ...');
+                    },
+                    text: 'sıfırla',
+                    options: FFButtonOptions(
+                      height: 40.0,
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                      iconPadding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).primary,
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
+                                fontFamily: 'Readex Pro',
+                                color: Colors.white,
+                                letterSpacing: 0.0,
+                              ),
+                      elevation: 3.0,
+                      borderSide: const BorderSide(
+                        color: Colors.transparent,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

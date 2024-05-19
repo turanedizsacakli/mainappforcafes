@@ -105,7 +105,6 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'HomePage': const HomePageWidget(),
-      'ChooseEatingOrderPagec': const ChooseEatingOrderPagecWidget(),
       'ChooseTable': const ChooseTableWidget(),
       'AdminOrderPage': const AdminOrderPageWidget(),
     };
@@ -129,14 +128,6 @@ class _NavBarPageState extends State<NavBarPage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home_outlined,
-              size: 24.0,
-            ),
-            label: 'Home',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.pending_actions,
               size: 24.0,
             ),
             label: 'Home',

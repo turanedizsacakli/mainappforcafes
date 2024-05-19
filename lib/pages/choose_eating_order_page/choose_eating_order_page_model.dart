@@ -1,5 +1,5 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/form_field_controller.dart';
 import 'choose_eating_order_page_widget.dart' show ChooseEatingOrderPageWidget;
 import 'package:flutter/material.dart';
 
@@ -19,15 +19,14 @@ class ChooseEatingOrderPageModel
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
 
-  // State field(s) for mealDropDown widget.
-  String? mealDropDownValue1;
-  FormFieldController<String>? mealDropDownValueController1;
-  // State field(s) for mealDropDown widget.
-  String? mealDropDownValue2;
-  FormFieldController<String>? mealDropDownValueController2;
-  // State field(s) for mealDropDown widget.
-  String? mealDropDownValue3;
-  FormFieldController<String>? mealDropDownValueController3;
+  // State field(s) for CheckboxListTile widget.
+
+  Map<MealsRecord, bool> checkboxListTileValueMap = {};
+  List<MealsRecord> get checkboxListTileCheckedItems =>
+      checkboxListTileValueMap.entries
+          .where((e) => e.value)
+          .map((e) => e.key)
+          .toList();
 
   @override
   void initState(BuildContext context) {}

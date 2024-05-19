@@ -148,7 +148,7 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                                 });
 
                                 context.pushNamed(
-                                  'ChooseEatingOrderPageCopyCopy',
+                                  'ChooseEatingOrderPage',
                                   queryParameters: {
                                     'pageCost': serializeParam(
                                       FFAppState().tableAccount,
@@ -300,7 +300,7 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed('ChooseEatingOrderPagec');
+                            context.pushNamed('ChooseEatingOrderPage');
 
                             setState(() {
                               FFAppState().tableNumber = 2;
@@ -446,7 +446,7 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed('ChooseEatingOrderPagec');
+                            context.pushNamed('ChooseEatingOrderPage');
 
                             setState(() {
                               FFAppState().tableNumber = 3;
@@ -601,7 +601,7 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed('ChooseEatingOrderPagec');
+                            context.pushNamed('ChooseEatingOrderPage');
                           },
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -680,7 +680,7 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed('ChooseEatingOrderPagec');
+                            context.pushNamed('ChooseEatingOrderPage');
                           },
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -759,7 +759,7 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed('ChooseEatingOrderPagec');
+                            context.pushNamed('ChooseEatingOrderPage');
                           },
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -847,7 +847,7 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed('ChooseEatingOrderPagec');
+                            context.pushNamed('ChooseEatingOrderPage');
                           },
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -926,7 +926,7 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed('ChooseEatingOrderPagec');
+                            context.pushNamed('ChooseEatingOrderPage');
                           },
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -1005,7 +1005,7 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed('ChooseEatingOrderPagec');
+                            context.pushNamed('ChooseEatingOrderPage');
                           },
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -1093,7 +1093,7 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed('ChooseEatingOrderPagec');
+                            context.pushNamed('ChooseEatingOrderPage');
                           },
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -1172,7 +1172,7 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed('ChooseEatingOrderPagec');
+                            context.pushNamed('ChooseEatingOrderPage');
                           },
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -1251,7 +1251,7 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed('ChooseEatingOrderPagec');
+                            context.pushNamed('ChooseEatingOrderPage');
                           },
                           child: Column(
                             mainAxisSize: MainAxisSize.max,

@@ -8,15 +8,11 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future<double?> newCustomAction(
-  double oldCost,
+Future<double> additionAction(
+  double newCost,
   double pageCost,
 ) async {
   // Add your function code here!
-  if (oldCost != 0) {
-    pageCost = oldCost;
-  } else {
-    pageCost = 0;
-  }
+  pageCost -= newCost;
   return pageCost;
 }

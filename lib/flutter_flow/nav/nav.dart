@@ -45,28 +45,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : const HomePageWidget(),
         ),
         FFRoute(
-          name: 'OrdersPage',
-          path: '/ordersPage',
-          builder: (context, params) => const OrdersPageWidget(),
-        ),
-        FFRoute(
-          name: 'ChooseEatingOrderPagec',
-          path: '/chooseEatingOrderPagec',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'ChooseEatingOrderPagec')
-              : ChooseEatingOrderPagecWidget(
-                  pageCost: params.getParam(
-                    'pageCost',
-                    ParamType.double,
-                  ),
-                ),
-        ),
-        FFRoute(
-          name: 'ChooseDrinkingOrderPage',
-          path: '/chooseDrinkingOrderPage',
-          builder: (context, params) => const ChooseDrinkingOrderPageWidget(),
-        ),
-        FFRoute(
           name: 'ChooseTable',
           path: '/chooseTable',
           builder: (context, params) => params.isEmpty
@@ -91,36 +69,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'ChooseEatingOrderPageCopy2',
-          path: '/chooseEatingOrderPageCopy2',
-          builder: (context, params) => ChooseEatingOrderPageCopy2Widget(
-            pageCost: params.getParam(
-              'pageCost',
-              ParamType.double,
-            ),
-          ),
-        ),
-        FFRoute(
-          name: 'ChooseEatingOrderPageCopy',
-          path: '/chooseEatingOrderPageCopy',
-          builder: (context, params) => ChooseEatingOrderPageCopyWidget(
-            pageCost: params.getParam(
-              'pageCost',
-              ParamType.double,
-            ),
-          ),
-        ),
-        FFRoute(
-          name: 'ChooseEatingOrderPageCopyCopy',
-          path: '/chooseEatingOrderPageCopyCopy',
-          builder: (context, params) => ChooseEatingOrderPageCopyCopyWidget(
-            pageCost: params.getParam(
-              'pageCost',
-              ParamType.double,
-            ),
-          ),
-        ),
-        FFRoute(
           name: 'AddProduct',
           path: '/addProduct',
           builder: (context, params) => const AddProductWidget(),
@@ -131,9 +79,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const DenemeWidget(),
         ),
         FFRoute(
-          name: 'denemeCopy',
-          path: '/denemeCopy',
-          builder: (context, params) => const DenemeCopyWidget(),
+          name: 'AddWaiter',
+          path: '/addWaiter',
+          builder: (context, params) => const AddWaiterWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
