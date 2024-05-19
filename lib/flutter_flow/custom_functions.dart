@@ -11,51 +11,12 @@ import 'uploaded_file.dart';
 import '/backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-double? portionAction(
-  double cost,
-  String portion,
+double pageTotalCostFunction(
+  List<double> listOfCosts,
+  double totalCost,
 ) {
-  if (portion == "1 Porsiyon") {
-    cost = cost * 1;
-  } else if (portion == "1,5 Porsiyon") {
-    cost = cost * 1.5;
-  } else if (portion == "2 Porsiyon") {
-    cost = cost * 2;
+  for (int i = 0; i < listOfCosts.length; i++) {
+    totalCost = totalCost + listOfCosts[i];
   }
-  return cost;
-}
-
-double? drinkingAction(
-  double cost,
-  String drinking,
-) {
-  if (drinking == "Kola") {
-    cost = cost + 50;
-  } else if (drinking == "Ayran") {
-    cost = cost + 20;
-  } else if (drinking == "Şalgam") {
-    cost = cost + 30;
-  }
-  return cost;
-}
-
-double? addCost(
-  double oldCost,
-  double newCost,
-) {
-  if (oldCost != null) {
-    oldCost = oldCost + newCost;
-  } else {
-    oldCost = 0;
-  }
-  return oldCost;
-}
-
-double? takeCos(
-  double oldCost,
-  double pageCost,
-) {
-  oldCost = pageCost;
-
-  return pageCost;
+  return totalCost;
 }
