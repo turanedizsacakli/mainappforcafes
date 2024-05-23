@@ -8,8 +8,8 @@ import '/backend/schema/util/schema_util.dart';
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class OrderRecord extends FirestoreRecord {
-  OrderRecord._(
+class ExOrderRecord extends FirestoreRecord {
+  ExOrderRecord._(
     super.reference,
     super.data,
   ) {
@@ -62,39 +62,40 @@ class OrderRecord extends FirestoreRecord {
   }
 
   static CollectionReference get collection =>
-      FirebaseFirestore.instance.collection('order');
+      FirebaseFirestore.instance.collection('exOrder');
 
-  static Stream<OrderRecord> getDocument(DocumentReference ref) =>
-      ref.snapshots().map((s) => OrderRecord.fromSnapshot(s));
+  static Stream<ExOrderRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => ExOrderRecord.fromSnapshot(s));
 
-  static Future<OrderRecord> getDocumentOnce(DocumentReference ref) =>
-      ref.get().then((s) => OrderRecord.fromSnapshot(s));
+  static Future<ExOrderRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => ExOrderRecord.fromSnapshot(s));
 
-  static OrderRecord fromSnapshot(DocumentSnapshot snapshot) => OrderRecord._(
+  static ExOrderRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      ExOrderRecord._(
         snapshot.reference,
         mapFromFirestore(snapshot.data() as Map<String, dynamic>),
       );
 
-  static OrderRecord getDocumentFromData(
+  static ExOrderRecord getDocumentFromData(
     Map<String, dynamic> data,
     DocumentReference reference,
   ) =>
-      OrderRecord._(reference, mapFromFirestore(data));
+      ExOrderRecord._(reference, mapFromFirestore(data));
 
   @override
   String toString() =>
-      'OrderRecord(reference: ${reference.path}, data: $snapshotData)';
+      'ExOrderRecord(reference: ${reference.path}, data: $snapshotData)';
 
   @override
   int get hashCode => reference.path.hashCode;
 
   @override
   bool operator ==(other) =>
-      other is OrderRecord &&
+      other is ExOrderRecord &&
       reference.path.hashCode == other.reference.path.hashCode;
 }
 
-Map<String, dynamic> createOrderRecordData({
+Map<String, dynamic> createExOrderRecordData({
   int? tableNumber,
   double? costOfThisPost,
   DateTime? date,
@@ -116,11 +117,11 @@ Map<String, dynamic> createOrderRecordData({
   return firestoreData;
 }
 
-class OrderRecordDocumentEquality implements Equality<OrderRecord> {
-  const OrderRecordDocumentEquality();
+class ExOrderRecordDocumentEquality implements Equality<ExOrderRecord> {
+  const ExOrderRecordDocumentEquality();
 
   @override
-  bool equals(OrderRecord? e1, OrderRecord? e2) {
+  bool equals(ExOrderRecord? e1, ExOrderRecord? e2) {
     const listEquality = ListEquality();
     return e1?.tableNumber == e2?.tableNumber &&
         e1?.costOfThisPost == e2?.costOfThisPost &&
@@ -132,7 +133,7 @@ class OrderRecordDocumentEquality implements Equality<OrderRecord> {
   }
 
   @override
-  int hash(OrderRecord? e) => const ListEquality().hash([
+  int hash(ExOrderRecord? e) => const ListEquality().hash([
         e?.tableNumber,
         e?.costOfThisPost,
         e?.date,
@@ -143,5 +144,5 @@ class OrderRecordDocumentEquality implements Equality<OrderRecord> {
       ]);
 
   @override
-  bool isValidKey(Object? o) => o is OrderRecord;
+  bool isValidKey(Object? o) => o is ExOrderRecord;
 }

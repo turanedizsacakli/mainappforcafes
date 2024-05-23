@@ -1,13 +1,11 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'deneme_widget.dart' show DenemeWidget;
+import 'order_page_widget.dart' show OrderPageWidget;
 import 'package:flutter/material.dart';
 
-class DenemeModel extends FlutterFlowModel<DenemeWidget> {
+class OrderPageModel extends FlutterFlowModel<OrderPageWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // State field(s) for CheckboxListTile widget.
-  bool? checkboxListTileValue;
 
   @override
   void initState(BuildContext context) {}

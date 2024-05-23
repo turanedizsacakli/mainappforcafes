@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'admin_order_page_widget.dart' show AdminOrderPageWidget;
+import 'z_raport_of_day_widget.dart' show ZRaportOfDayWidget;
 import 'package:flutter/material.dart';
 
-class AdminOrderPageModel extends FlutterFlowModel<AdminOrderPageWidget> {
+class ZRaportOfDayModel extends FlutterFlowModel<ZRaportOfDayWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

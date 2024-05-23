@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'deneme_model.dart';
 export 'deneme_model.dart';
 
@@ -35,8 +34,6 @@ class _DenemeWidgetState extends State<DenemeWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -74,39 +71,56 @@ class _DenemeWidgetState extends State<DenemeWidget> {
                     children: [
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                        child: Builder(
-                          builder: (context) {
-                            final liste = FFAppState().pageCost.toList();
-                            return Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children:
-                                  List.generate(liste.length, (listeIndex) {
-                                final listeItem = liste[listeIndex];
-                                return Text(
-                                  listeItem.toString(),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        letterSpacing: 0.0,
-                                      ),
-                                );
-                              }),
-                            );
-                          },
-                        ),
-                      ),
-                      Padding(
-                        padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                         child: Text(
-                          FFAppState().denemeTotal.toString(),
+                          'Hello World',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',
                                     letterSpacing: 0.0,
                                   ),
+                        ),
+                      ),
+                      Theme(
+                        data: ThemeData(
+                          checkboxTheme: const CheckboxThemeData(
+                            visualDensity: VisualDensity.compact,
+                            materialTapTargetSize:
+                                MaterialTapTargetSize.shrinkWrap,
+                          ),
+                          unselectedWidgetColor:
+                              FlutterFlowTheme.of(context).secondaryText,
+                        ),
+                        child: CheckboxListTile(
+                          value: _model.checkboxListTileValue ??= false,
+                          onChanged: (newValue) async {
+                            setState(
+                                () => _model.checkboxListTileValue = newValue!);
+                          },
+                          title: Text(
+                            'başlık',
+                            style: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          subtitle: Text(
+                            'Subtitle goes here...',
+                            style: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          tileColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          activeColor: FlutterFlowTheme.of(context).primary,
+                          checkColor: FlutterFlowTheme.of(context).info,
+                          dense: false,
+                          controlAffinity: ListTileControlAffinity.trailing,
                         ),
                       ),
                     ],

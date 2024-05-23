@@ -1013,6 +1013,36 @@ class _ChooseEatingOrderPageWidgetState
                                                       0.0, 10.0, 0.0, 5.0),
                                               child: FFButtonWidget(
                                                 onPressed: () async {
+                                                  // dbOrderSender
+
+                                                  await OrderRecord.collection
+                                                      .doc()
+                                                      .set({
+                                                    ...createOrderRecordData(
+                                                      tableNumber: FFAppState()
+                                                          .tableNumber,
+                                                      costOfThisPost:
+                                                          FFAppState()
+                                                              .pageTotalCost,
+                                                      waiterName: FFAppState()
+                                                          .waiterName,
+                                                    ),
+                                                    ...mapToFirestore(
+                                                      {
+                                                        'date': FieldValue
+                                                            .serverTimestamp(),
+                                                        'orderList':
+                                                            FFAppState().order,
+                                                      },
+                                                    ),
+                                                  });
+                                                  // dbAddRealCost
+                                                  setState(() {
+                                                    FFAppState().pageTotalCost =
+                                                        FFAppState()
+                                                                .pageTotalCost +
+                                                            widget.pageCost!;
+                                                  });
                                                   if (FFAppState()
                                                           .tableNumber ==
                                                       1) {
@@ -1021,7 +1051,8 @@ class _ChooseEatingOrderPageWidgetState
                                                         .doc()
                                                         .set(
                                                             createTablesRecordData(
-                                                          table1: _model.cost,
+                                                          table1: FFAppState()
+                                                              .pageTotalCost,
                                                         ));
                                                   } else {
                                                     if (FFAppState()
@@ -1032,7 +1063,8 @@ class _ChooseEatingOrderPageWidgetState
                                                           .doc()
                                                           .set(
                                                               createTablesRecordData(
-                                                            table2: _model.cost,
+                                                            table2: FFAppState()
+                                                                .pageTotalCost,
                                                           ));
                                                     } else {
                                                       if (FFAppState()
@@ -1043,8 +1075,8 @@ class _ChooseEatingOrderPageWidgetState
                                                             .doc()
                                                             .set(
                                                                 createTablesRecordData(
-                                                              table3:
-                                                                  _model.cost,
+                                                              table3: FFAppState()
+                                                                  .pageTotalCost,
                                                             ));
                                                       } else {
                                                         if (FFAppState()
@@ -1055,13 +1087,22 @@ class _ChooseEatingOrderPageWidgetState
                                                               .doc()
                                                               .set(
                                                                   createTablesRecordData(
-                                                                table4:
-                                                                    _model.cost,
+                                                                table4: FFAppState()
+                                                                    .pageTotalCost,
                                                               ));
                                                         }
                                                       }
                                                     }
                                                   }
+
+                                                  setState(() {
+                                                    FFAppState().order = [];
+                                                    FFAppState()
+                                                        .deletedTheCost = [];
+                                                    FFAppState().pageCost = [];
+                                                    FFAppState().pageTotalCost =
+                                                        0.0;
+                                                  });
                                                 },
                                                 text: '~ EKLE ~',
                                                 options: FFButtonOptions(
@@ -1097,67 +1138,52 @@ class _ChooseEatingOrderPageWidgetState
                                               ),
                                             ),
                                           ),
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
-                                            children: [
-                                              FFButtonWidget(
-                                                onPressed: () async {
-                                                  setState(() {
-                                                    FFAppState().pageTotalCost =
-                                                        FFAppState()
-                                                                .pageTotalCost +
-                                                            widget.pageCost!;
-                                                  });
-                                                },
-                                                text: 'Button',
-                                                options: FFButtonOptions(
-                                                  height: 40.0,
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          24.0, 0.0, 24.0, 0.0),
-                                                  iconPadding:
-                                                      const EdgeInsetsDirectional
-                                                          .fromSTEB(0.0, 0.0,
-                                                              0.0, 0.0),
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  textStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmall
-                                                          .override(
-                                                            fontFamily:
-                                                                'Readex Pro',
-                                                            color: Colors.white,
-                                                            letterSpacing: 0.0,
-                                                          ),
-                                                  elevation: 3.0,
-                                                  borderSide: const BorderSide(
-                                                    color: Colors.transparent,
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                              ),
-                                              Text(
-                                                FFAppState()
-                                                    .pageTotalCost
-                                                    .toString(),
-                                                style:
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 100.0),
+                                            child: FFButtonWidget(
+                                              onPressed: () async {
+                                                setState(() {
+                                                  FFAppState().order = [];
+                                                  FFAppState().deletedTheCost =
+                                                      [];
+                                                  FFAppState().pageCost = [];
+                                                  FFAppState().pageTotalCost =
+                                                      0.0;
+                                                });
+                                              },
+                                              text: 'Button',
+                                              options: FFButtonOptions(
+                                                height: 40.0,
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        24.0, 0.0, 24.0, 0.0),
+                                                iconPadding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium
+                                                        .primary,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
                                                         .override(
                                                           fontFamily:
                                                               'Readex Pro',
+                                                          color: Colors.white,
                                                           letterSpacing: 0.0,
                                                         ),
+                                                elevation: 3.0,
+                                                borderSide: const BorderSide(
+                                                  color: Colors.transparent,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
                                               ),
-                                            ],
+                                            ),
                                           ),
                                         ],
                                       ),
