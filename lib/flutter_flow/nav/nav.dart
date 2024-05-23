@@ -52,21 +52,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : const ChooseTableWidget(),
         ),
         FFRoute(
-          name: 'AdminOrderPage',
-          path: '/adminOrderPage',
+          name: 'orderPage',
+          path: '/orderPage',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'AdminOrderPage')
-              : const AdminOrderPageWidget(),
+              ? const NavBarPage(initialPage: 'orderPage')
+              : const OrderPageWidget(),
         ),
         FFRoute(
           name: 'ChooseEatingOrderPage',
           path: '/chooseEatingOrderPage',
-          builder: (context, params) => ChooseEatingOrderPageWidget(
-            pageCost: params.getParam(
-              'pageCost',
-              ParamType.double,
-            ),
-          ),
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'ChooseEatingOrderPage')
+              : NavBarPage(
+                  initialPage: 'ChooseEatingOrderPage',
+                  page: ChooseEatingOrderPageWidget(
+                    pageCost: params.getParam(
+                      'pageCost',
+                      ParamType.double,
+                    ),
+                  ),
+                ),
         ),
         FFRoute(
           name: 'AddProduct',
@@ -82,6 +87,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'AddWaiter',
           path: '/addWaiter',
           builder: (context, params) => const AddWaiterWidget(),
+        ),
+        FFRoute(
+          name: 'zRaportOfDay',
+          path: '/zRaportOfDay',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'zRaportOfDay')
+              : const ZRaportOfDayWidget(),
+        ),
+        FFRoute(
+          name: 'paymentPage',
+          path: '/paymentPage',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'paymentPage')
+              : const PaymentPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
