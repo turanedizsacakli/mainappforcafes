@@ -6,6 +6,7 @@ import 'schema/meals_record.dart';
 import 'schema/order_record.dart';
 import 'schema/tables_record.dart';
 import 'schema/ex_order_record.dart';
+import 'schema/table1_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -18,6 +19,7 @@ export 'schema/meals_record.dart';
 export 'schema/order_record.dart';
 export 'schema/tables_record.dart';
 export 'schema/ex_order_record.dart';
+export 'schema/table1_record.dart';
 
 /// Functions to query MealsRecords (as a Stream and as a Future).
 Future<int> queryMealsRecordCount({
@@ -162,6 +164,43 @@ Future<List<ExOrderRecord>> queryExOrderRecordOnce({
     queryCollectionOnce(
       ExOrderRecord.collection,
       ExOrderRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query Table1Records (as a Stream and as a Future).
+Future<int> queryTable1RecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      Table1Record.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<Table1Record>> queryTable1Record({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      Table1Record.collection,
+      Table1Record.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<Table1Record>> queryTable1RecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      Table1Record.collection,
+      Table1Record.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

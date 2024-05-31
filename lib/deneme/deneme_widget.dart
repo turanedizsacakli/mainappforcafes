@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -81,47 +82,79 @@ class _DenemeWidgetState extends State<DenemeWidget> {
                                   ),
                         ),
                       ),
-                      Theme(
-                        data: ThemeData(
-                          checkboxTheme: const CheckboxThemeData(
-                            visualDensity: VisualDensity.compact,
-                            materialTapTargetSize:
-                                MaterialTapTargetSize.shrinkWrap,
-                          ),
-                          unselectedWidgetColor:
-                              FlutterFlowTheme.of(context).secondaryText,
+                      StreamBuilder<List<Table1Record>>(
+                        stream: queryTable1Record(
+                          singleRecord: true,
                         ),
-                        child: CheckboxListTile(
-                          value: _model.checkboxListTileValue ??= false,
-                          onChanged: (newValue) async {
-                            setState(
-                                () => _model.checkboxListTileValue = newValue!);
-                          },
-                          title: Text(
-                            'başlık',
-                            style: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .override(
-                                  fontFamily: 'Outfit',
-                                  letterSpacing: 0.0,
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    FlutterFlowTheme.of(context).primary,
+                                  ),
                                 ),
-                          ),
-                          subtitle: Text(
-                            'Subtitle goes here...',
-                            style: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                          tileColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          activeColor: FlutterFlowTheme.of(context).primary,
-                          checkColor: FlutterFlowTheme.of(context).info,
-                          dense: false,
-                          controlAffinity: ListTileControlAffinity.trailing,
-                        ),
+                              ),
+                            );
+                          }
+                          List<Table1Record> checkboxListTileTable1RecordList =
+                              snapshot.data!;
+                          // Return an empty Container when the item does not exist.
+                          if (snapshot.data!.isEmpty) {
+                            return Container();
+                          }
+                          final checkboxListTileTable1Record =
+                              checkboxListTileTable1RecordList.isNotEmpty
+                                  ? checkboxListTileTable1RecordList.first
+                                  : null;
+                          return Theme(
+                            data: ThemeData(
+                              checkboxTheme: const CheckboxThemeData(
+                                visualDensity: VisualDensity.compact,
+                                materialTapTargetSize:
+                                    MaterialTapTargetSize.shrinkWrap,
+                              ),
+                              unselectedWidgetColor:
+                                  FlutterFlowTheme.of(context).secondaryText,
+                            ),
+                            child: CheckboxListTile(
+                              value: _model.checkboxListTileValue ??= false,
+                              onChanged: (newValue) async {
+                                setState(() =>
+                                    _model.checkboxListTileValue = newValue!);
+                              },
+                              title: Text(
+                                checkboxListTileTable1Record!.tableNumber
+                                    .toString(),
+                                style: FlutterFlowTheme.of(context)
+                                    .titleLarge
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      letterSpacing: 0.0,
+                                    ),
+                              ),
+                              subtitle: Text(
+                                'Subtitle goes here...',
+                                style: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
+                                    ),
+                              ),
+                              tileColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              activeColor: FlutterFlowTheme.of(context).primary,
+                              checkColor: FlutterFlowTheme.of(context).info,
+                              dense: false,
+                              controlAffinity: ListTileControlAffinity.trailing,
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),

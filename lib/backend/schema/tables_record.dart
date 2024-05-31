@@ -46,6 +46,16 @@ class TablesRecord extends FirestoreRecord {
   double get table6 => _table6 ?? 0.0;
   bool hasTable6() => _table6 != null;
 
+  // "cashPayment" field.
+  double? _cashPayment;
+  double get cashPayment => _cashPayment ?? 0.0;
+  bool hasCashPayment() => _cashPayment != null;
+
+  // "creditCardPayment" field.
+  double? _creditCardPayment;
+  double get creditCardPayment => _creditCardPayment ?? 0.0;
+  bool hasCreditCardPayment() => _creditCardPayment != null;
+
   void _initializeFields() {
     _table1 = castToType<double>(snapshotData['table1']);
     _table2 = castToType<double>(snapshotData['table2']);
@@ -53,6 +63,8 @@ class TablesRecord extends FirestoreRecord {
     _table4 = castToType<double>(snapshotData['table4']);
     _table5 = castToType<double>(snapshotData['table5']);
     _table6 = castToType<double>(snapshotData['table6']);
+    _cashPayment = castToType<double>(snapshotData['cashPayment']);
+    _creditCardPayment = castToType<double>(snapshotData['creditCardPayment']);
   }
 
   static CollectionReference get collection =>
@@ -95,6 +107,8 @@ Map<String, dynamic> createTablesRecordData({
   double? table4,
   double? table5,
   double? table6,
+  double? cashPayment,
+  double? creditCardPayment,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -104,6 +118,8 @@ Map<String, dynamic> createTablesRecordData({
       'table4': table4,
       'table5': table5,
       'table6': table6,
+      'cashPayment': cashPayment,
+      'creditCardPayment': creditCardPayment,
     }.withoutNulls,
   );
 
@@ -120,12 +136,22 @@ class TablesRecordDocumentEquality implements Equality<TablesRecord> {
         e1?.table3 == e2?.table3 &&
         e1?.table4 == e2?.table4 &&
         e1?.table5 == e2?.table5 &&
-        e1?.table6 == e2?.table6;
+        e1?.table6 == e2?.table6 &&
+        e1?.cashPayment == e2?.cashPayment &&
+        e1?.creditCardPayment == e2?.creditCardPayment;
   }
 
   @override
-  int hash(TablesRecord? e) => const ListEquality()
-      .hash([e?.table1, e?.table2, e?.table3, e?.table4, e?.table5, e?.table6]);
+  int hash(TablesRecord? e) => const ListEquality().hash([
+        e?.table1,
+        e?.table2,
+        e?.table3,
+        e?.table4,
+        e?.table5,
+        e?.table6,
+        e?.cashPayment,
+        e?.creditCardPayment
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is TablesRecord;

@@ -2,27 +2,28 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'payment_page_model.dart';
-export 'payment_page_model.dart';
+import 'z_raport_of_day_model.dart';
+export 'z_raport_of_day_model.dart';
 
-class PaymentPageWidget extends StatefulWidget {
-  const PaymentPageWidget({super.key});
+class ZRaportOfDayWidget extends StatefulWidget {
+  const ZRaportOfDayWidget({super.key});
 
   @override
-  State<PaymentPageWidget> createState() => _PaymentPageWidgetState();
+  State<ZRaportOfDayWidget> createState() => _ZRaportOfDayWidgetState();
 }
 
-class _PaymentPageWidgetState extends State<PaymentPageWidget> {
-  late PaymentPageModel _model;
+class _ZRaportOfDayWidgetState extends State<ZRaportOfDayWidget> {
+  late ZRaportOfDayModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => PaymentPageModel());
+    _model = createModel(context, () => ZRaportOfDayModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -61,7 +62,7 @@ class _PaymentPageWidgetState extends State<PaymentPageWidget> {
             },
           ),
           title: Text(
-            'Ödeme Sayfası',
+            'Günün Z Raporu',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Outfit',
                   color: Colors.white,
@@ -87,6 +88,23 @@ class _PaymentPageWidgetState extends State<PaymentPageWidget> {
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 0.0, 0.0),
+                        child: Text(
+                          'SİPARİŞ LİSTESİ',
+                          textAlign: TextAlign.start,
+                          style:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    color: Colors.black,
+                                    fontSize: 20.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                        ),
+                      ),
                       Align(
                         alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Padding(
@@ -328,35 +346,24 @@ class _PaymentPageWidgetState extends State<PaymentPageWidget> {
                                                       ),
                                                     ],
                                                   ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(5.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceAround,
-                                                      children: [
-                                                        FaIcon(
-                                                          FontAwesomeIcons
-                                                              .moneyBillWave,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                  InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {},
+                                                    child: FaIcon(
+                                                      FontAwesomeIcons
+                                                          .solidTrashAlt,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .secondaryText,
-                                                          size: 24.0,
-                                                        ),
-                                                        FaIcon(
-                                                          FontAwesomeIcons
-                                                              .solidCreditCard,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryText,
-                                                          size: 24.0,
-                                                        ),
-                                                      ],
+                                                      size: 24.0,
                                                     ),
                                                   ),
                                                 ],
@@ -367,10 +374,44 @@ class _PaymentPageWidgetState extends State<PaymentPageWidget> {
                                       ),
                                     ),
                                   );
-                                }).divide(const SizedBox(height: 3.0)),
+                                }).divide(
+                                  const SizedBox(height: 3.0),
+                                  filterFn: (columnIndex) {
+                                    final columnOrderRecord =
+                                        columnOrderRecordList[columnIndex];
+                                    return columnOrderRecord.isOrderReady ==
+                                        false;
+                                  },
+                                ),
                               );
                             },
                           ),
+                        ),
+                      ),
+                      FFButtonWidget(
+                        onPressed: () {
+                          print('Button pressed ...');
+                        },
+                        text: 'GÜNÜ SONLANDIR',
+                        options: FFButtonOptions(
+                          height: 40.0,
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).primary,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Readex Pro',
+                                    color: Colors.white,
+                                    letterSpacing: 0.0,
+                                  ),
+                          elevation: 3.0,
+                          borderSide: const BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
                     ],

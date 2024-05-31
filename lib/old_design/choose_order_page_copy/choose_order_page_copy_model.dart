@@ -1,10 +1,10 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'choose_eating_order_page_widget.dart' show ChooseEatingOrderPageWidget;
+import 'choose_order_page_copy_widget.dart' show ChooseOrderPageCopyWidget;
 import 'package:flutter/material.dart';
 
-class ChooseEatingOrderPageModel
-    extends FlutterFlowModel<ChooseEatingOrderPageWidget> {
+class ChooseOrderPageCopyModel
+    extends FlutterFlowModel<ChooseOrderPageCopyWidget> {
   ///  Local state fields for this page.
 
   double? cost;
