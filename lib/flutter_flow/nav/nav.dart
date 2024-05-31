@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '/backend/backend.dart';
 
 import '/index.dart';
 import '/main.dart';
@@ -52,26 +53,31 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : const ChooseTableWidget(),
         ),
         FFRoute(
-          name: 'orderPage',
+          name: 'OrderPage',
           path: '/orderPage',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'orderPage')
+              ? const NavBarPage(initialPage: 'OrderPage')
               : const OrderPageWidget(),
         ),
         FFRoute(
-          name: 'ChooseEatingOrderPage',
-          path: '/chooseEatingOrderPage',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'ChooseEatingOrderPage')
-              : NavBarPage(
-                  initialPage: 'ChooseEatingOrderPage',
-                  page: ChooseEatingOrderPageWidget(
-                    pageCost: params.getParam(
-                      'pageCost',
-                      ParamType.double,
-                    ),
-                  ),
-                ),
+          name: 'ChooseOrderPage',
+          path: '/chooseOrderPage',
+          asyncParams: {
+            'table1': getDoc(['table1'], Table1Record.fromSnapshot),
+          },
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: ChooseOrderPageWidget(
+              pageCost: params.getParam(
+                'pageCost',
+                ParamType.double,
+              ),
+              table1: params.getParam(
+                'table1',
+                ParamType.Document,
+              ),
+            ),
+          ),
         ),
         FFRoute(
           name: 'AddProduct',
@@ -89,18 +95,46 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const AddWaiterWidget(),
         ),
         FFRoute(
-          name: 'zRaportOfDay',
+          name: 'ZRaportOfDay',
           path: '/zRaportOfDay',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'zRaportOfDay')
+              ? const NavBarPage(initialPage: 'ZRaportOfDay')
               : const ZRaportOfDayWidget(),
         ),
         FFRoute(
-          name: 'paymentPage',
+          name: 'DetailedPaymentPage',
+          path: '/detailedPaymentPage',
+          builder: (context, params) => const DetailedPaymentPageWidget(),
+        ),
+        FFRoute(
+          name: 'PaymentPage',
           path: '/paymentPage',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'paymentPage')
-              : const PaymentPageWidget(),
+          builder: (context, params) => const PaymentPageWidget(),
+        ),
+        FFRoute(
+          name: 'PaymentPageCopy',
+          path: '/paymentPageC',
+          builder: (context, params) => const PaymentPageCopyWidget(),
+        ),
+        FFRoute(
+          name: 'ChooseTableCopy',
+          path: '/chooseTableCopy',
+          builder: (context, params) => const ChooseTableCopyWidget(),
+        ),
+        FFRoute(
+          name: 'OrderPageCopy',
+          path: '/orderPage2',
+          builder: (context, params) => const OrderPageCopyWidget(),
+        ),
+        FFRoute(
+          name: 'ChooseOrderPageCopy',
+          path: '/chooseOrderPage2',
+          builder: (context, params) => ChooseOrderPageCopyWidget(
+            pageCost: params.getParam(
+              'pageCost',
+              ParamType.double,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

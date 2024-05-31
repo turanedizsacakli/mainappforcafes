@@ -6,11 +6,11 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
-import 'choose_eating_order_page_model.dart';
-export 'choose_eating_order_page_model.dart';
+import 'choose_order_page_copy_model.dart';
+export 'choose_order_page_copy_model.dart';
 
-class ChooseEatingOrderPageWidget extends StatefulWidget {
-  const ChooseEatingOrderPageWidget({
+class ChooseOrderPageCopyWidget extends StatefulWidget {
+  const ChooseOrderPageCopyWidget({
     super.key,
     this.pageCost,
   });
@@ -18,20 +18,20 @@ class ChooseEatingOrderPageWidget extends StatefulWidget {
   final double? pageCost;
 
   @override
-  State<ChooseEatingOrderPageWidget> createState() =>
-      _ChooseEatingOrderPageWidgetState();
+  State<ChooseOrderPageCopyWidget> createState() =>
+      _ChooseOrderPageCopyWidgetState();
 }
 
-class _ChooseEatingOrderPageWidgetState
-    extends State<ChooseEatingOrderPageWidget> with TickerProviderStateMixin {
-  late ChooseEatingOrderPageModel _model;
+class _ChooseOrderPageCopyWidgetState extends State<ChooseOrderPageCopyWidget>
+    with TickerProviderStateMixin {
+  late ChooseOrderPageCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ChooseEatingOrderPageModel());
+    _model = createModel(context, () => ChooseOrderPageCopyModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {});
@@ -77,15 +77,14 @@ class _ChooseEatingOrderPageWidgetState
             ),
           );
         }
-        List<TablesRecord> chooseEatingOrderPageTablesRecordList =
-            snapshot.data!;
+        List<TablesRecord> chooseOrderPageCopyTablesRecordList = snapshot.data!;
         // Return an empty Container when the item does not exist.
         if (snapshot.data!.isEmpty) {
           return Container();
         }
-        final chooseEatingOrderPageTablesRecord =
-            chooseEatingOrderPageTablesRecordList.isNotEmpty
-                ? chooseEatingOrderPageTablesRecordList.first
+        final chooseOrderPageCopyTablesRecord =
+            chooseOrderPageCopyTablesRecordList.isNotEmpty
+                ? chooseOrderPageCopyTablesRecordList.first
                 : null;
         return GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus
@@ -178,7 +177,7 @@ class _ChooseEatingOrderPageWidgetState
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  context.pushNamed('ChooseEatingOrderPage');
+                                  context.pushNamed('ChooseOrderPageCopy');
                                 },
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -191,8 +190,8 @@ class _ChooseEatingOrderPageWidgetState
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          context.pushNamed(
-                                              'ChooseEatingOrderPage');
+                                          context
+                                              .pushNamed('ChooseOrderPageCopy');
                                         },
                                         child: Container(
                                           width: 50.0,
@@ -285,19 +284,16 @@ class _ChooseEatingOrderPageWidgetState
                                   onTap: (i) async {
                                     [
                                       () async {
-                                        setState(() {
-                                          _model.orderReason = 'Yiyecek';
-                                        });
+                                        _model.orderReason = 'Yiyecek';
+                                        setState(() {});
                                       },
                                       () async {
-                                        setState(() {
-                                          _model.orderReason = 'İçecek';
-                                        });
+                                        _model.orderReason = 'İçecek';
+                                        setState(() {});
                                       },
                                       () async {
-                                        setState(() {
-                                          _model.orderReason = 'Nargile';
-                                        });
+                                        _model.orderReason = 'Nargile';
+                                        setState(() {});
                                       }
                                     ][i]();
                                   },
@@ -545,62 +541,57 @@ class _ChooseEatingOrderPageWidgetState
                                                                               columnMealsRecord] =
                                                                           newValue!);
                                                                   if (newValue!) {
+                                                                    FFAppState().order = _model
+                                                                        .checkboxListTileCheckedItems
+                                                                        .map((e) => e
+                                                                            .mealName)
+                                                                        .toList()
+                                                                        .cast<
+                                                                            String>();
+                                                                    FFAppState().pageCost = _model
+                                                                        .checkboxListTileCheckedItems
+                                                                        .map((e) => e
+                                                                            .mealCost)
+                                                                        .toList()
+                                                                        .cast<
+                                                                            double>();
                                                                     setState(
-                                                                        () {
-                                                                      FFAppState().order = _model
-                                                                          .checkboxListTileCheckedItems
-                                                                          .map((e) => e
-                                                                              .mealName)
-                                                                          .toList()
-                                                                          .cast<
-                                                                              String>();
-                                                                      FFAppState().pageCost = _model
-                                                                          .checkboxListTileCheckedItems
-                                                                          .map((e) => e
-                                                                              .mealCost)
-                                                                          .toList()
-                                                                          .cast<
-                                                                              double>();
-                                                                    });
+                                                                        () {});
+                                                                    FFAppState()
+                                                                        .pageTotalCost = FFAppState()
+                                                                            .pageTotalCost +
+                                                                        FFAppState()
+                                                                            .pageCost[_model.tabBarCurrentIndex];
                                                                     setState(
-                                                                        () {
-                                                                      FFAppState()
-                                                                          .pageTotalCost = FFAppState()
-                                                                              .pageTotalCost +
-                                                                          FFAppState()
-                                                                              .pageCost[_model.tabBarCurrentIndex];
-                                                                    });
+                                                                        () {});
+                                                                    FFAppState().deletedTheCost = FFAppState()
+                                                                        .pageCost
+                                                                        .toList()
+                                                                        .cast<
+                                                                            double>();
                                                                     setState(
-                                                                        () {
-                                                                      FFAppState().deletedTheCost = FFAppState()
-                                                                          .pageCost
-                                                                          .toList()
-                                                                          .cast<
-                                                                              double>();
-                                                                    });
+                                                                        () {});
                                                                   } else {
+                                                                    FFAppState()
+                                                                        .removeAtIndexFromOrder(
+                                                                            _model.tabBarCurrentIndex);
+                                                                    FFAppState()
+                                                                        .removeAtIndexFromPageCost(
+                                                                            _model.tabBarCurrentIndex);
                                                                     setState(
-                                                                        () {
-                                                                      FFAppState()
-                                                                          .removeAtIndexFromOrder(
-                                                                              _model.tabBarCurrentIndex);
-                                                                      FFAppState()
-                                                                          .removeAtIndexFromPageCost(
-                                                                              _model.tabBarCurrentIndex);
-                                                                    });
+                                                                        () {});
+                                                                    FFAppState()
+                                                                        .pageTotalCost = FFAppState()
+                                                                            .pageTotalCost +
+                                                                        ((double
+                                                                            var1) {
+                                                                          return var1 =
+                                                                              -1 * var1;
+                                                                        }(FFAppState()
+                                                                            .deletedTheCost
+                                                                            .last));
                                                                     setState(
-                                                                        () {
-                                                                      FFAppState()
-                                                                          .pageTotalCost = FFAppState()
-                                                                              .pageTotalCost +
-                                                                          ((double
-                                                                              var1) {
-                                                                            return var1 =
-                                                                                -1 * var1;
-                                                                          }(FFAppState()
-                                                                              .deletedTheCost
-                                                                              .last));
-                                                                    });
+                                                                        () {});
                                                                   }
                                                                 },
                                                                 title: Text(
@@ -980,12 +971,10 @@ class _ChooseEatingOrderPageWidgetState
                                                   highlightColor:
                                                       Colors.transparent,
                                                   onDoubleTap: () async {
-                                                    setState(() {
-                                                      FFAppState()
-                                                              .pageTotalCost =
-                                                          FFAppState()
-                                                              .pageTotalCost;
-                                                    });
+                                                    FFAppState().pageTotalCost =
+                                                        FFAppState()
+                                                            .pageTotalCost;
+                                                    setState(() {});
                                                   },
                                                   child: Text(
                                                     FFAppState()
@@ -1037,12 +1026,11 @@ class _ChooseEatingOrderPageWidgetState
                                                     ),
                                                   });
                                                   // dbAddRealCost
-                                                  setState(() {
-                                                    FFAppState().pageTotalCost =
-                                                        FFAppState()
-                                                                .pageTotalCost +
-                                                            widget.pageCost!;
-                                                  });
+                                                  FFAppState().pageTotalCost =
+                                                      FFAppState()
+                                                              .pageTotalCost +
+                                                          widget.pageCost!;
+                                                  setState(() {});
                                                   if (FFAppState()
                                                           .tableNumber ==
                                                       1) {
@@ -1095,14 +1083,13 @@ class _ChooseEatingOrderPageWidgetState
                                                     }
                                                   }
 
-                                                  setState(() {
-                                                    FFAppState().order = [];
-                                                    FFAppState()
-                                                        .deletedTheCost = [];
-                                                    FFAppState().pageCost = [];
-                                                    FFAppState().pageTotalCost =
-                                                        0.0;
-                                                  });
+                                                  FFAppState().order = [];
+                                                  FFAppState().deletedTheCost =
+                                                      [];
+                                                  FFAppState().pageCost = [];
+                                                  FFAppState().pageTotalCost =
+                                                      0.0;
+                                                  setState(() {});
                                                 },
                                                 text: '~ EKLE ~',
                                                 options: FFButtonOptions(
@@ -1144,14 +1131,13 @@ class _ChooseEatingOrderPageWidgetState
                                                     0.0, 0.0, 0.0, 100.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
-                                                setState(() {
-                                                  FFAppState().order = [];
-                                                  FFAppState().deletedTheCost =
-                                                      [];
-                                                  FFAppState().pageCost = [];
-                                                  FFAppState().pageTotalCost =
-                                                      0.0;
-                                                });
+                                                FFAppState().order = [];
+                                                FFAppState().deletedTheCost =
+                                                    [];
+                                                FFAppState().pageCost = [];
+                                                FFAppState().pageTotalCost =
+                                                    0.0;
+                                                setState(() {});
                                               },
                                               text: 'Button',
                                               options: FFButtonOptions(

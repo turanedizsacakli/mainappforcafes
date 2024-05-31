@@ -67,7 +67,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             children: [
               FFButtonWidget(
                 onPressed: () async {
-                  context.pushNamed('deneme');
+                  context.pushNamed('PaymentPage');
                 },
                 text: 'Button',
                 options: FFButtonOptions(
@@ -144,9 +144,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               onTap: () async {
                                 context.pushNamed('ChooseTable');
 
-                                setState(() {
-                                  FFAppState().waiterName = 'TURAN';
-                                });
+                                FFAppState().waiterName = 'TURAN';
+                                setState(() {});
                               },
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -205,9 +204,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               onTap: () async {
                                 context.pushNamed('ChooseTable');
 
-                                setState(() {
-                                  FFAppState().waiterName = 'MUSTAFA';
-                                });
+                                FFAppState().waiterName = 'MUSTAFA';
+                                setState(() {});
                               },
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -266,9 +264,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               onTap: () async {
                                 context.pushNamed('ChooseTable');
 
-                                setState(() {
-                                  FFAppState().waiterName = 'HATİCE';
-                                });
+                                FFAppState().waiterName = 'HATİCE';
+                                setState(() {});
                               },
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -327,9 +324,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               onTap: () async {
                                 context.pushNamed('ChooseTable');
 
-                                setState(() {
-                                  FFAppState().waiterName = 'ALİ';
-                                });
+                                FFAppState().waiterName = 'ALİ';
+                                setState(() {});
                               },
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,

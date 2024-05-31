@@ -3,25 +3,26 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'choose_table_model.dart';
-export 'choose_table_model.dart';
+import 'package:provider/provider.dart';
+import 'choose_table_copy_model.dart';
+export 'choose_table_copy_model.dart';
 
-class ChooseTableWidget extends StatefulWidget {
-  const ChooseTableWidget({super.key});
+class ChooseTableCopyWidget extends StatefulWidget {
+  const ChooseTableCopyWidget({super.key});
 
   @override
-  State<ChooseTableWidget> createState() => _ChooseTableWidgetState();
+  State<ChooseTableCopyWidget> createState() => _ChooseTableCopyWidgetState();
 }
 
-class _ChooseTableWidgetState extends State<ChooseTableWidget> {
-  late ChooseTableModel _model;
+class _ChooseTableCopyWidgetState extends State<ChooseTableCopyWidget> {
+  late ChooseTableCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ChooseTableModel());
+    _model = createModel(context, () => ChooseTableCopyModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -35,6 +36,8 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -104,8 +107,8 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                       child: Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                        child: StreamBuilder<List<Table1Record>>(
-                          stream: queryTable1Record(
+                        child: StreamBuilder<List<TablesRecord>>(
+                          stream: queryTablesRecord(
                             singleRecord: true,
                           ),
                           builder: (context, snapshot) {
@@ -123,11 +126,15 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                                 ),
                               );
                             }
-                            List<Table1Record> columnTable1RecordList =
+                            List<TablesRecord> columnTablesRecordList =
                                 snapshot.data!;
-                            final columnTable1Record =
-                                columnTable1RecordList.isNotEmpty
-                                    ? columnTable1RecordList.first
+                            // Return an empty Container when the item does not exist.
+                            if (snapshot.data!.isEmpty) {
+                              return Container();
+                            }
+                            final columnTablesRecord =
+                                columnTablesRecordList.isNotEmpty
+                                    ? columnTablesRecordList.first
                                     : null;
                             return InkWell(
                               splashColor: Colors.transparent,
@@ -137,31 +144,6 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                               onTap: () async {
                                 FFAppState().tableNumber = 1;
                                 setState(() {});
-                                if (columnTable1Record?.costOfThisPost !=
-                                    null) {
-                                  FFAppState().order = columnTable1Record!
-                                      .orderList
-                                      .toList()
-                                      .cast<String>();
-                                  FFAppState().pageTotalCost =
-                                      columnTable1Record.costOfThisPost;
-                                  setState(() {});
-
-                                  context.pushNamed(
-                                    'ChooseOrderPage',
-                                    queryParameters: {
-                                      'table1': serializeParam(
-                                        columnTable1Record,
-                                        ParamType.Document,
-                                      ),
-                                    }.withoutNulls,
-                                    extra: <String, dynamic>{
-                                      'table1': columnTable1Record,
-                                    },
-                                  );
-                                } else {
-                                  context.pushNamed('ChooseOrderPage');
-                                }
                               },
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -204,18 +186,58 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                                       Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 7.0),
-                                        child: Text(
-                                          valueOrDefault<String>(
-                                            columnTable1Record?.costOfThisPost
-                                                .toString(),
-                                            '0',
+                                        child:
+                                            StreamBuilder<List<TablesRecord>>(
+                                          stream: queryTablesRecord(
+                                            singleRecord: true,
                                           ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                letterSpacing: 0.0,
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 50.0,
+                                                  height: 50.0,
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    valueColor:
+                                                        AlwaysStoppedAnimation<
+                                                            Color>(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            }
+                                            List<TablesRecord>
+                                                textTablesRecordList =
+                                                snapshot.data!;
+                                            // Return an empty Container when the item does not exist.
+                                            if (snapshot.data!.isEmpty) {
+                                              return Container();
+                                            }
+                                            final textTablesRecord =
+                                                textTablesRecordList.isNotEmpty
+                                                    ? textTablesRecordList.first
+                                                    : null;
+                                            return Text(
+                                              valueOrDefault<String>(
+                                                textTablesRecord?.table1
+                                                    .toString(),
+                                                '0',
                                               ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            );
+                                          },
                                         ),
                                       ),
                                       Text(
@@ -256,87 +278,110 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                       child: Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            FFAppState().tableNumber = 2;
-                            setState(() {});
-                          },
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Align(
-                                alignment: const AlignmentDirectional(0.0, -1.0),
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 7.0, 0.0, 0.0),
-                                  child: Container(
-                                    width: 75.0,
-                                    height: 75.0,
-                                    clipBehavior: Clip.antiAlias,
-                                    decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Image.network(
-                                      'https://picsum.photos/seed/640/600',
-                                      fit: BoxFit.cover,
-                                    ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Align(
+                              alignment: const AlignmentDirectional(0.0, -1.0),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 7.0, 0.0, 0.0),
+                                child: Container(
+                                  width: 75.0,
+                                  height: 75.0,
+                                  clipBehavior: Clip.antiAlias,
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Image.network(
+                                    'https://picsum.photos/seed/640/600',
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                               ),
-                              Text(
-                                'MASA 2',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
+                            ),
+                            Text(
+                              'MASA 2',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 7.0),
+                                  child: StreamBuilder<List<TablesRecord>>(
+                                    stream: queryTablesRecord(
+                                      singleRecord: true,
                                     ),
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 7.0),
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        setState(() {});
-                                      },
-                                      child: Text(
-                                        'burada fiyat',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              letterSpacing: 0.0,
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            child: CircularProgressIndicator(
+                                              valueColor:
+                                                  AlwaysStoppedAnimation<Color>(
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                              ),
                                             ),
-                                      ),
-                                    ),
-                                  ),
-                                  Text(
-                                    ' ₺',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
+                                          ),
+                                        );
+                                      }
+                                      List<TablesRecord> textTablesRecordList =
+                                          snapshot.data!;
+                                      // Return an empty Container when the item does not exist.
+                                      if (snapshot.data!.isEmpty) {
+                                        return Container();
+                                      }
+                                      final textTablesRecord =
+                                          textTablesRecordList.isNotEmpty
+                                              ? textTablesRecordList.first
+                                              : null;
+                                      return InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          setState(() {});
+                                        },
+                                        child: Text(
+                                          'burada fiyat',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                letterSpacing: 0.0,
+                                              ),
                                         ),
+                                      );
+                                    },
                                   ),
-                                ],
-                              ),
-                            ],
-                          ),
+                                ),
+                                Text(
+                                  ' ₺',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -400,23 +445,56 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                                 Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 7.0),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      setState(() {});
-                                    },
-                                    child: Text(
-                                      'burada fiyat',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            letterSpacing: 0.0,
-                                          ),
+                                  child: StreamBuilder<List<TablesRecord>>(
+                                    stream: queryTablesRecord(
+                                      singleRecord: true,
                                     ),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            child: CircularProgressIndicator(
+                                              valueColor:
+                                                  AlwaysStoppedAnimation<Color>(
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      List<TablesRecord> textTablesRecordList =
+                                          snapshot.data!;
+                                      // Return an empty Container when the item does not exist.
+                                      if (snapshot.data!.isEmpty) {
+                                        return Container();
+                                      }
+                                      final textTablesRecord =
+                                          textTablesRecordList.isNotEmpty
+                                              ? textTablesRecordList.first
+                                              : null;
+                                      return InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          setState(() {});
+                                        },
+                                        child: Text(
+                                          'burada fiyat',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                      );
+                                    },
                                   ),
                                 ),
                                 Text(

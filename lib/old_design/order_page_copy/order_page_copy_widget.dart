@@ -5,25 +5,25 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'order_page_model.dart';
-export 'order_page_model.dart';
+import 'order_page_copy_model.dart';
+export 'order_page_copy_model.dart';
 
-class OrderPageWidget extends StatefulWidget {
-  const OrderPageWidget({super.key});
+class OrderPageCopyWidget extends StatefulWidget {
+  const OrderPageCopyWidget({super.key});
 
   @override
-  State<OrderPageWidget> createState() => _OrderPageWidgetState();
+  State<OrderPageCopyWidget> createState() => _OrderPageCopyWidgetState();
 }
 
-class _OrderPageWidgetState extends State<OrderPageWidget> {
-  late OrderPageModel _model;
+class _OrderPageCopyWidgetState extends State<OrderPageCopyWidget> {
+  late OrderPageCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => OrderPageModel());
+    _model = createModel(context, () => OrderPageCopyModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
