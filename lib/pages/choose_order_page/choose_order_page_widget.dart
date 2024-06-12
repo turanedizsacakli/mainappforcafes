@@ -464,7 +464,7 @@ class _ChooseOrderPageWidgetState extends State<ChooseOrderPageWidget>
                                                                           columnMealsRecord] =
                                                                       newValue!);
                                                               if (newValue!) {
-                                                                FFAppState().order = _model
+                                                                FFAppState().newOrderList = _model
                                                                     .checkboxListTileCheckedItems
                                                                     .map((e) => e
                                                                         .mealName)
@@ -708,7 +708,7 @@ class _ChooseOrderPageWidgetState extends State<ChooseOrderPageWidget>
                                                             builder: (context) {
                                                               final orderList =
                                                                   FFAppState()
-                                                                      .order
+                                                                      .newOrderList
                                                                       .toList();
                                                               return Column(
                                                                 mainAxisSize:
@@ -844,6 +844,21 @@ class _ChooseOrderPageWidgetState extends State<ChooseOrderPageWidget>
                                               if (widget.table1 != null) {
                                                 await widget.table1!.reference
                                                     .delete();
+                                                FFAppState()
+                                                    .order = (List<String> var1,
+                                                            List<String> var2) {
+                                                  return var1 = List.from(var1)
+                                                    ..addAll(var2);
+                                                }(
+                                                        FFAppState()
+                                                            .order
+                                                            .toList(),
+                                                        FFAppState()
+                                                            .newOrderList
+                                                            .toList())
+                                                    .toList()
+                                                    .cast<String>();
+                                                setState(() {});
 
                                                 await Table1Record.collection
                                                     .doc()
@@ -864,6 +879,9 @@ class _ChooseOrderPageWidgetState extends State<ChooseOrderPageWidget>
                                                           .serverTimestamp(),
                                                       'orderList':
                                                           FFAppState().order,
+                                                      'newOrderList':
+                                                          FFAppState()
+                                                              .newOrderList,
                                                     },
                                                   ),
                                                 });
@@ -887,6 +905,9 @@ class _ChooseOrderPageWidgetState extends State<ChooseOrderPageWidget>
                                                           .serverTimestamp(),
                                                       'orderList':
                                                           FFAppState().order,
+                                                      'newOrderList':
+                                                          FFAppState()
+                                                              .newOrderList,
                                                     },
                                                   ),
                                                 });
@@ -897,7 +918,10 @@ class _ChooseOrderPageWidgetState extends State<ChooseOrderPageWidget>
                                               FFAppState().deletedTheCost = [];
                                               FFAppState().pageCost = [];
                                               FFAppState().pageTotalCost = 0.0;
+                                              FFAppState().newOrderList = [];
                                               setState(() {});
+
+                                              context.pushNamed('ChooseTable');
                                             },
                                             text: '~ EKLE ~',
                                             options: FFButtonOptions(

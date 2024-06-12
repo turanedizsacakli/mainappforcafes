@@ -54,6 +54,15 @@ class FFAppState extends ChangeNotifier {
               .toList() ??
           _deletedTheCost;
     });
+    _safeInit(() {
+      _dene2 = prefs.getStringList('ff_dene2') ?? _dene2;
+    });
+    _safeInit(() {
+      _denemeSonuc = prefs.getInt('ff_denemeSonuc') ?? _denemeSonuc;
+    });
+    _safeInit(() {
+      _newOrderList = prefs.getStringList('ff_newOrderList') ?? _newOrderList;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -85,17 +94,17 @@ class FFAppState extends ChangeNotifier {
   }
 
   void addToOrder(String value) {
-    _order.add(value);
+    order.add(value);
     prefs.setStringList('ff_order', _order);
   }
 
   void removeFromOrder(String value) {
-    _order.remove(value);
+    order.remove(value);
     prefs.setStringList('ff_order', _order);
   }
 
   void removeAtIndexFromOrder(int index) {
-    _order.removeAt(index);
+    order.removeAt(index);
     prefs.setStringList('ff_order', _order);
   }
 
@@ -103,12 +112,12 @@ class FFAppState extends ChangeNotifier {
     int index,
     String Function(String) updateFn,
   ) {
-    _order[index] = updateFn(_order[index]);
+    order[index] = updateFn(_order[index]);
     prefs.setStringList('ff_order', _order);
   }
 
   void insertAtIndexInOrder(int index, String value) {
-    _order.insert(index, value);
+    order.insert(index, value);
     prefs.setStringList('ff_order', _order);
   }
 
@@ -127,17 +136,17 @@ class FFAppState extends ChangeNotifier {
   }
 
   void addToDeneme(String value) {
-    _deneme.add(value);
+    deneme.add(value);
     prefs.setStringList('ff_deneme', _deneme);
   }
 
   void removeFromDeneme(String value) {
-    _deneme.remove(value);
+    deneme.remove(value);
     prefs.setStringList('ff_deneme', _deneme);
   }
 
   void removeAtIndexFromDeneme(int index) {
-    _deneme.removeAt(index);
+    deneme.removeAt(index);
     prefs.setStringList('ff_deneme', _deneme);
   }
 
@@ -145,12 +154,12 @@ class FFAppState extends ChangeNotifier {
     int index,
     String Function(String) updateFn,
   ) {
-    _deneme[index] = updateFn(_deneme[index]);
+    deneme[index] = updateFn(_deneme[index]);
     prefs.setStringList('ff_deneme', _deneme);
   }
 
   void insertAtIndexInDeneme(int index, String value) {
-    _deneme.insert(index, value);
+    deneme.insert(index, value);
     prefs.setStringList('ff_deneme', _deneme);
   }
 
@@ -163,19 +172,19 @@ class FFAppState extends ChangeNotifier {
   }
 
   void addToDenemeCost(double value) {
-    _denemeCost.add(value);
+    denemeCost.add(value);
     prefs.setStringList(
         'ff_denemeCost', _denemeCost.map((x) => x.toString()).toList());
   }
 
   void removeFromDenemeCost(double value) {
-    _denemeCost.remove(value);
+    denemeCost.remove(value);
     prefs.setStringList(
         'ff_denemeCost', _denemeCost.map((x) => x.toString()).toList());
   }
 
   void removeAtIndexFromDenemeCost(int index) {
-    _denemeCost.removeAt(index);
+    denemeCost.removeAt(index);
     prefs.setStringList(
         'ff_denemeCost', _denemeCost.map((x) => x.toString()).toList());
   }
@@ -184,13 +193,13 @@ class FFAppState extends ChangeNotifier {
     int index,
     double Function(double) updateFn,
   ) {
-    _denemeCost[index] = updateFn(_denemeCost[index]);
+    denemeCost[index] = updateFn(_denemeCost[index]);
     prefs.setStringList(
         'ff_denemeCost', _denemeCost.map((x) => x.toString()).toList());
   }
 
   void insertAtIndexInDenemeCost(int index, double value) {
-    _denemeCost.insert(index, value);
+    denemeCost.insert(index, value);
     prefs.setStringList(
         'ff_denemeCost', _denemeCost.map((x) => x.toString()).toList());
   }
@@ -206,24 +215,23 @@ class FFAppState extends ChangeNotifier {
   List<double> get pageCost => _pageCost;
   set pageCost(List<double> value) {
     _pageCost = value;
-    prefs.setStringList(
-        'ff_pageCost', value.map((x) => x.toString()).toList());
+    prefs.setStringList('ff_pageCost', value.map((x) => x.toString()).toList());
   }
 
   void addToPageCost(double value) {
-    _pageCost.add(value);
+    pageCost.add(value);
     prefs.setStringList(
         'ff_pageCost', _pageCost.map((x) => x.toString()).toList());
   }
 
   void removeFromPageCost(double value) {
-    _pageCost.remove(value);
+    pageCost.remove(value);
     prefs.setStringList(
         'ff_pageCost', _pageCost.map((x) => x.toString()).toList());
   }
 
   void removeAtIndexFromPageCost(int index) {
-    _pageCost.removeAt(index);
+    pageCost.removeAt(index);
     prefs.setStringList(
         'ff_pageCost', _pageCost.map((x) => x.toString()).toList());
   }
@@ -232,13 +240,13 @@ class FFAppState extends ChangeNotifier {
     int index,
     double Function(double) updateFn,
   ) {
-    _pageCost[index] = updateFn(_pageCost[index]);
+    pageCost[index] = updateFn(_pageCost[index]);
     prefs.setStringList(
         'ff_pageCost', _pageCost.map((x) => x.toString()).toList());
   }
 
   void insertAtIndexInPageCost(int index, double value) {
-    _pageCost.insert(index, value);
+    pageCost.insert(index, value);
     prefs.setStringList(
         'ff_pageCost', _pageCost.map((x) => x.toString()).toList());
   }
@@ -259,19 +267,19 @@ class FFAppState extends ChangeNotifier {
   }
 
   void addToDeletedTheCost(double value) {
-    _deletedTheCost.add(value);
+    deletedTheCost.add(value);
     prefs.setStringList(
         'ff_deletedTheCost', _deletedTheCost.map((x) => x.toString()).toList());
   }
 
   void removeFromDeletedTheCost(double value) {
-    _deletedTheCost.remove(value);
+    deletedTheCost.remove(value);
     prefs.setStringList(
         'ff_deletedTheCost', _deletedTheCost.map((x) => x.toString()).toList());
   }
 
   void removeAtIndexFromDeletedTheCost(int index) {
-    _deletedTheCost.removeAt(index);
+    deletedTheCost.removeAt(index);
     prefs.setStringList(
         'ff_deletedTheCost', _deletedTheCost.map((x) => x.toString()).toList());
   }
@@ -280,15 +288,92 @@ class FFAppState extends ChangeNotifier {
     int index,
     double Function(double) updateFn,
   ) {
-    _deletedTheCost[index] = updateFn(_deletedTheCost[index]);
+    deletedTheCost[index] = updateFn(_deletedTheCost[index]);
     prefs.setStringList(
         'ff_deletedTheCost', _deletedTheCost.map((x) => x.toString()).toList());
   }
 
   void insertAtIndexInDeletedTheCost(int index, double value) {
-    _deletedTheCost.insert(index, value);
+    deletedTheCost.insert(index, value);
     prefs.setStringList(
         'ff_deletedTheCost', _deletedTheCost.map((x) => x.toString()).toList());
+  }
+
+  List<String> _dene2 = [];
+  List<String> get dene2 => _dene2;
+  set dene2(List<String> value) {
+    _dene2 = value;
+    prefs.setStringList('ff_dene2', value);
+  }
+
+  void addToDene2(String value) {
+    dene2.add(value);
+    prefs.setStringList('ff_dene2', _dene2);
+  }
+
+  void removeFromDene2(String value) {
+    dene2.remove(value);
+    prefs.setStringList('ff_dene2', _dene2);
+  }
+
+  void removeAtIndexFromDene2(int index) {
+    dene2.removeAt(index);
+    prefs.setStringList('ff_dene2', _dene2);
+  }
+
+  void updateDene2AtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    dene2[index] = updateFn(_dene2[index]);
+    prefs.setStringList('ff_dene2', _dene2);
+  }
+
+  void insertAtIndexInDene2(int index, String value) {
+    dene2.insert(index, value);
+    prefs.setStringList('ff_dene2', _dene2);
+  }
+
+  int _denemeSonuc = 0;
+  int get denemeSonuc => _denemeSonuc;
+  set denemeSonuc(int value) {
+    _denemeSonuc = value;
+    prefs.setInt('ff_denemeSonuc', value);
+  }
+
+  List<String> _newOrderList = [];
+  List<String> get newOrderList => _newOrderList;
+  set newOrderList(List<String> value) {
+    _newOrderList = value;
+    prefs.setStringList('ff_newOrderList', value);
+  }
+
+  void addToNewOrderList(String value) {
+    newOrderList.add(value);
+    prefs.setStringList('ff_newOrderList', _newOrderList);
+  }
+
+  void removeFromNewOrderList(String value) {
+    newOrderList.remove(value);
+    prefs.setStringList('ff_newOrderList', _newOrderList);
+  }
+
+  void removeAtIndexFromNewOrderList(int index) {
+    newOrderList.removeAt(index);
+    prefs.setStringList('ff_newOrderList', _newOrderList);
+  }
+
+  void updateNewOrderListAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    newOrderList[index] = updateFn(_newOrderList[index]);
+    prefs.setStringList('ff_newOrderList', _newOrderList);
+  }
+
+  void insertAtIndexInNewOrderList(int index, String value) {
+    newOrderList.insert(index, value);
+    prefs.setStringList('ff_newOrderList', _newOrderList);
   }
 }
 

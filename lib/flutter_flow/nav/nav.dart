@@ -53,11 +53,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : const ChooseTableWidget(),
         ),
         FFRoute(
-          name: 'OrderPage',
-          path: '/orderPage',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'OrderPage')
-              : const OrderPageWidget(),
+          name: 'OrderPageOld',
+          path: '/orderPageOld',
+          builder: (context, params) => const OrderPageOldWidget(),
         ),
         FFRoute(
           name: 'ChooseOrderPage',
@@ -102,19 +100,32 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : const ZRaportOfDayWidget(),
         ),
         FFRoute(
-          name: 'DetailedPaymentPage',
+          name: 'PaymentDetailedPage',
           path: '/detailedPaymentPage',
-          builder: (context, params) => const DetailedPaymentPageWidget(),
+          asyncParams: {
+            'tableDetails': getDoc(['table1'], Table1Record.fromSnapshot),
+          },
+          builder: (context, params) => PaymentDetailedPageWidget(
+            tableDetails: params.getParam(
+              'tableDetails',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'PaymentPageCopy',
+          path: '/paymentPageCopy',
+          builder: (context, params) => const PaymentPageCopyWidget(),
         ),
         FFRoute(
           name: 'PaymentPage',
           path: '/paymentPage',
-          builder: (context, params) => const PaymentPageWidget(),
-        ),
-        FFRoute(
-          name: 'PaymentPageCopy',
-          path: '/paymentPageC',
-          builder: (context, params) => const PaymentPageCopyWidget(),
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'PaymentPage')
+              : const NavBarPage(
+                  initialPage: 'PaymentPage',
+                  page: PaymentPageWidget(),
+                ),
         ),
         FFRoute(
           name: 'ChooseTableCopy',
@@ -135,6 +146,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.double,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'OrderPage',
+          path: '/orderPage',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'OrderPage')
+              : const OrderPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
