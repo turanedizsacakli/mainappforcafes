@@ -1,9 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'detailed_payment_page_widget.dart' show DetailedPaymentPageWidget;
+import 'order_page_old_widget.dart' show OrderPageOldWidget;
 import 'package:flutter/material.dart';
 
-class DetailedPaymentPageModel
-    extends FlutterFlowModel<DetailedPaymentPageWidget> {
+class OrderPageOldModel extends FlutterFlowModel<OrderPageOldWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

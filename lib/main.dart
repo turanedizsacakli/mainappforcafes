@@ -109,6 +109,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'HomePage': const HomePageWidget(),
       'ChooseTable': const ChooseTableWidget(),
       'OrderPage': const OrderPageWidget(),
+      'PaymentPage': const PaymentPageWidget(),
       'ZRaportOfDay': const ZRaportOfDayWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
@@ -216,8 +217,32 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  Icons.sort_by_alpha,
+                  FontAwesomeIcons.moneyCheckAlt,
                   color: currentIndex == 3
+                      ? FlutterFlowTheme.of(context).primary
+                      : const Color(0x8A000000),
+                  size: 24.0,
+                ),
+                Text(
+                  'Payment',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 3
+                        ? FlutterFlowTheme.of(context).primary
+                        : const Color(0x8A000000),
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.sort_by_alpha,
+                  color: currentIndex == 4
                       ? FlutterFlowTheme.of(context).primary
                       : const Color(0x8A000000),
                   size: 24.0,
@@ -226,7 +251,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   'zRaport',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: currentIndex == 3
+                    color: currentIndex == 4
                         ? FlutterFlowTheme.of(context).primary
                         : const Color(0x8A000000),
                     fontSize: 11.0,

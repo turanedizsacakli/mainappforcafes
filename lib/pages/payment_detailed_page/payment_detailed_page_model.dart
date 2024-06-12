@@ -1,8 +1,9 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'z_raport_of_day_widget.dart' show ZRaportOfDayWidget;
+import 'payment_detailed_page_widget.dart' show PaymentDetailedPageWidget;
 import 'package:flutter/material.dart';
 
-class ZRaportOfDayModel extends FlutterFlowModel<ZRaportOfDayWidget> {
+class PaymentDetailedPageModel
+    extends FlutterFlowModel<PaymentDetailedPageWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

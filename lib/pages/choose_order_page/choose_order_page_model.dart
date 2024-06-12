@@ -19,7 +19,6 @@ class ChooseOrderPageModel extends FlutterFlowModel<ChooseOrderPageWidget> {
       tabBarController != null ? tabBarController!.index : 0;
 
   // State field(s) for CheckboxListTile widget.
-
   Map<MealsRecord, bool> checkboxListTileValueMap = {};
   List<MealsRecord> get checkboxListTileCheckedItems =>
       checkboxListTileValueMap.entries

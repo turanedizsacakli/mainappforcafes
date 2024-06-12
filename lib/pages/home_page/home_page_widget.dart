@@ -67,7 +67,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             children: [
               FFButtonWidget(
                 onPressed: () async {
-                  context.pushNamed('PaymentPage');
+                  context.pushNamed('deneme');
                 },
                 text: 'Button',
                 options: FFButtonOptions(

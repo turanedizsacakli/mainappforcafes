@@ -4,25 +4,25 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'payment_page_model.dart';
-export 'payment_page_model.dart';
+import 'payment_page_copy_model.dart';
+export 'payment_page_copy_model.dart';
 
-class PaymentPageWidget extends StatefulWidget {
-  const PaymentPageWidget({super.key});
+class PaymentPageCopyWidget extends StatefulWidget {
+  const PaymentPageCopyWidget({super.key});
 
   @override
-  State<PaymentPageWidget> createState() => _PaymentPageWidgetState();
+  State<PaymentPageCopyWidget> createState() => _PaymentPageCopyWidgetState();
 }
 
-class _PaymentPageWidgetState extends State<PaymentPageWidget> {
-  late PaymentPageModel _model;
+class _PaymentPageCopyWidgetState extends State<PaymentPageCopyWidget> {
+  late PaymentPageCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => PaymentPageModel());
+    _model = createModel(context, () => PaymentPageCopyModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }

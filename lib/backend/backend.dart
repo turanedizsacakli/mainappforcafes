@@ -5,8 +5,8 @@ import 'schema/util/firestore_util.dart';
 import 'schema/meals_record.dart';
 import 'schema/order_record.dart';
 import 'schema/tables_record.dart';
-import 'schema/ex_order_record.dart';
 import 'schema/table1_record.dart';
+import 'schema/ex_order_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -18,8 +18,8 @@ export 'schema/util/schema_util.dart';
 export 'schema/meals_record.dart';
 export 'schema/order_record.dart';
 export 'schema/tables_record.dart';
-export 'schema/ex_order_record.dart';
 export 'schema/table1_record.dart';
+export 'schema/ex_order_record.dart';
 
 /// Functions to query MealsRecords (as a Stream and as a Future).
 Future<int> queryMealsRecordCount({
@@ -132,43 +132,6 @@ Future<List<TablesRecord>> queryTablesRecordOnce({
       singleRecord: singleRecord,
     );
 
-/// Functions to query ExOrderRecords (as a Stream and as a Future).
-Future<int> queryExOrderRecordCount({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-}) =>
-    queryCollectionCount(
-      ExOrderRecord.collection,
-      queryBuilder: queryBuilder,
-      limit: limit,
-    );
-
-Stream<List<ExOrderRecord>> queryExOrderRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      ExOrderRecord.collection,
-      ExOrderRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<ExOrderRecord>> queryExOrderRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      ExOrderRecord.collection,
-      ExOrderRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
 /// Functions to query Table1Records (as a Stream and as a Future).
 Future<int> queryTable1RecordCount({
   Query Function(Query)? queryBuilder,
@@ -201,6 +164,43 @@ Future<List<Table1Record>> queryTable1RecordOnce({
     queryCollectionOnce(
       Table1Record.collection,
       Table1Record.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query ExOrderRecords (as a Stream and as a Future).
+Future<int> queryExOrderRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      ExOrderRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<ExOrderRecord>> queryExOrderRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ExOrderRecord.collection,
+      ExOrderRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ExOrderRecord>> queryExOrderRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ExOrderRecord.collection,
+      ExOrderRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

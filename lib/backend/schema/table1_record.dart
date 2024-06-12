@@ -51,6 +51,21 @@ class Table1Record extends FirestoreRecord {
   bool get isCostPaid => _isCostPaid ?? false;
   bool hasIsCostPaid() => _isCostPaid != null;
 
+  // "newOrderList" field.
+  List<String>? _newOrderList;
+  List<String> get newOrderList => _newOrderList ?? const [];
+  bool hasNewOrderList() => _newOrderList != null;
+
+  // "withCreditCard" field.
+  bool? _withCreditCard;
+  bool get withCreditCard => _withCreditCard ?? false;
+  bool hasWithCreditCard() => _withCreditCard != null;
+
+  // "withCashMoney" field.
+  bool? _withCashMoney;
+  bool get withCashMoney => _withCashMoney ?? false;
+  bool hasWithCashMoney() => _withCashMoney != null;
+
   void _initializeFields() {
     _tableNumber = castToType<int>(snapshotData['tableNumber']);
     _costOfThisPost = castToType<double>(snapshotData['costOfThisPost']);
@@ -59,6 +74,9 @@ class Table1Record extends FirestoreRecord {
     _orderList = getDataList(snapshotData['orderList']);
     _isOrderReady = snapshotData['isOrderReady'] as bool?;
     _isCostPaid = snapshotData['isCostPaid'] as bool?;
+    _newOrderList = getDataList(snapshotData['newOrderList']);
+    _withCreditCard = snapshotData['withCreditCard'] as bool?;
+    _withCashMoney = snapshotData['withCashMoney'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -101,6 +119,8 @@ Map<String, dynamic> createTable1RecordData({
   String? waiterName,
   bool? isOrderReady,
   bool? isCostPaid,
+  bool? withCreditCard,
+  bool? withCashMoney,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -110,6 +130,8 @@ Map<String, dynamic> createTable1RecordData({
       'waiterName': waiterName,
       'isOrderReady': isOrderReady,
       'isCostPaid': isCostPaid,
+      'withCreditCard': withCreditCard,
+      'withCashMoney': withCashMoney,
     }.withoutNulls,
   );
 
@@ -128,7 +150,10 @@ class Table1RecordDocumentEquality implements Equality<Table1Record> {
         e1?.waiterName == e2?.waiterName &&
         listEquality.equals(e1?.orderList, e2?.orderList) &&
         e1?.isOrderReady == e2?.isOrderReady &&
-        e1?.isCostPaid == e2?.isCostPaid;
+        e1?.isCostPaid == e2?.isCostPaid &&
+        listEquality.equals(e1?.newOrderList, e2?.newOrderList) &&
+        e1?.withCreditCard == e2?.withCreditCard &&
+        e1?.withCashMoney == e2?.withCashMoney;
   }
 
   @override
@@ -139,7 +164,10 @@ class Table1RecordDocumentEquality implements Equality<Table1Record> {
         e?.waiterName,
         e?.orderList,
         e?.isOrderReady,
-        e?.isCostPaid
+        e?.isCostPaid,
+        e?.newOrderList,
+        e?.withCreditCard,
+        e?.withCashMoney
       ]);
 
   @override
