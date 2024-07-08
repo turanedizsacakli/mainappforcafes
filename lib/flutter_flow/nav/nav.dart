@@ -62,6 +62,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/chooseOrderPage',
           asyncParams: {
             'table1': getDoc(['table1'], Table1Record.fromSnapshot),
+            'table2': getDoc(['table2'], Table2Record.fromSnapshot),
+            'table3': getDoc(['table3'], Table3Record.fromSnapshot),
+            'table4': getDoc(['table4'], Table4Record.fromSnapshot),
+            'table5': getDoc(['table5'], Table5Record.fromSnapshot),
+            'table6': getDoc(['table6'], Table6Record.fromSnapshot),
+            'table7': getDoc(['table7'], Table7Record.fromSnapshot),
+            'table8': getDoc(['table8'], Table8Record.fromSnapshot),
+            'table9': getDoc(['table9'], Table9Record.fromSnapshot),
+            'table10': getDoc(['table10'], Table10Record.fromSnapshot),
+            'table11': getDoc(['table11'], Table11Record.fromSnapshot),
+            'table12': getDoc(['table12'], Table12Record.fromSnapshot),
           },
           builder: (context, params) => NavBarPage(
             initialPage: '',
@@ -72,6 +83,50 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
               table1: params.getParam(
                 'table1',
+                ParamType.Document,
+              ),
+              table2: params.getParam(
+                'table2',
+                ParamType.Document,
+              ),
+              table3: params.getParam(
+                'table3',
+                ParamType.Document,
+              ),
+              table4: params.getParam(
+                'table4',
+                ParamType.Document,
+              ),
+              table5: params.getParam(
+                'table5',
+                ParamType.Document,
+              ),
+              table6: params.getParam(
+                'table6',
+                ParamType.Document,
+              ),
+              table7: params.getParam(
+                'table7',
+                ParamType.Document,
+              ),
+              table8: params.getParam(
+                'table8',
+                ParamType.Document,
+              ),
+              table9: params.getParam(
+                'table9',
+                ParamType.Document,
+              ),
+              table10: params.getParam(
+                'table10',
+                ParamType.Document,
+              ),
+              table11: params.getParam(
+                'table11',
+                ParamType.Document,
+              ),
+              table12: params.getParam(
+                'table12',
                 ParamType.Document,
               ),
             ),
@@ -93,11 +148,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const AddWaiterWidget(),
         ),
         FFRoute(
-          name: 'ZRaportOfDay',
-          path: '/zRaportOfDay',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'ZRaportOfDay')
-              : const ZRaportOfDayWidget(),
+          name: 'ZRaportOfDayccc',
+          path: '/zRaportOfDayccc',
+          builder: (context, params) => const ZRaportOfDaycccWidget(),
         ),
         FFRoute(
           name: 'PaymentDetailedPage',
@@ -153,6 +206,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'OrderPage')
               : const OrderPageWidget(),
+        ),
+        FFRoute(
+          name: 'denemeCopy',
+          path: '/denemeCopy',
+          builder: (context, params) => const DenemeCopyWidget(),
+        ),
+        FFRoute(
+          name: 'ZRaportOfDayCopy',
+          path: '/zRaportOfDayc',
+          builder: (context, params) => const ZRaportOfDayCopyWidget(),
+        ),
+        FFRoute(
+          name: 'ZRaportOfDay',
+          path: '/zRaportOfDay',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'ZRaportOfDay')
+              : const ZRaportOfDayWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

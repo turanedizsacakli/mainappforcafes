@@ -63,6 +63,11 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _newOrderList = prefs.getStringList('ff_newOrderList') ?? _newOrderList;
     });
+    _safeInit(() {
+      _zRaport = prefs.containsKey('ff_zRaport')
+          ? DateTime.fromMillisecondsSinceEpoch(prefs.getInt('ff_zRaport')!)
+          : _zRaport;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -374,6 +379,15 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInNewOrderList(int index, String value) {
     newOrderList.insert(index, value);
     prefs.setStringList('ff_newOrderList', _newOrderList);
+  }
+
+  DateTime? _zRaport;
+  DateTime? get zRaport => _zRaport;
+  set zRaport(DateTime? value) {
+    _zRaport = value;
+    value != null
+        ? prefs.setInt('ff_zRaport', value.millisecondsSinceEpoch)
+        : prefs.remove('ff_zRaport');
   }
 }
 

@@ -108,8 +108,8 @@ class _NavBarPageState extends State<NavBarPage> {
     final tabs = {
       'HomePage': const HomePageWidget(),
       'ChooseTable': const ChooseTableWidget(),
-      'OrderPage': const OrderPageWidget(),
       'PaymentPage': const PaymentPageWidget(),
+      'OrderPage': const OrderPageWidget(),
       'ZRaportOfDay': const ZRaportOfDayWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
@@ -193,14 +193,14 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  FontAwesomeIcons.exclamationCircle,
+                  FontAwesomeIcons.moneyCheckAlt,
                   color: currentIndex == 2
                       ? FlutterFlowTheme.of(context).primary
                       : const Color(0x8A000000),
                   size: 24.0,
                 ),
                 Text(
-                  'Order',
+                  'Payment',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: currentIndex == 2
@@ -217,14 +217,14 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  FontAwesomeIcons.moneyCheckAlt,
+                  FontAwesomeIcons.exclamationCircle,
                   color: currentIndex == 3
                       ? FlutterFlowTheme.of(context).primary
                       : const Color(0x8A000000),
                   size: 24.0,
                 ),
                 Text(
-                  'Payment',
+                  'Order',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: currentIndex == 3

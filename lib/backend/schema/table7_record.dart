@@ -8,8 +8,8 @@ import '/backend/schema/util/schema_util.dart';
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class Table1Record extends FirestoreRecord {
-  Table1Record._(
+class Table7Record extends FirestoreRecord {
+  Table7Record._(
     super.reference,
     super.data,
   ) {
@@ -86,39 +86,39 @@ class Table1Record extends FirestoreRecord {
   }
 
   static CollectionReference get collection =>
-      FirebaseFirestore.instance.collection('table1');
+      FirebaseFirestore.instance.collection('table7');
 
-  static Stream<Table1Record> getDocument(DocumentReference ref) =>
-      ref.snapshots().map((s) => Table1Record.fromSnapshot(s));
+  static Stream<Table7Record> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => Table7Record.fromSnapshot(s));
 
-  static Future<Table1Record> getDocumentOnce(DocumentReference ref) =>
-      ref.get().then((s) => Table1Record.fromSnapshot(s));
+  static Future<Table7Record> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => Table7Record.fromSnapshot(s));
 
-  static Table1Record fromSnapshot(DocumentSnapshot snapshot) => Table1Record._(
+  static Table7Record fromSnapshot(DocumentSnapshot snapshot) => Table7Record._(
         snapshot.reference,
         mapFromFirestore(snapshot.data() as Map<String, dynamic>),
       );
 
-  static Table1Record getDocumentFromData(
+  static Table7Record getDocumentFromData(
     Map<String, dynamic> data,
     DocumentReference reference,
   ) =>
-      Table1Record._(reference, mapFromFirestore(data));
+      Table7Record._(reference, mapFromFirestore(data));
 
   @override
   String toString() =>
-      'Table1Record(reference: ${reference.path}, data: $snapshotData)';
+      'Table7Record(reference: ${reference.path}, data: $snapshotData)';
 
   @override
   int get hashCode => reference.path.hashCode;
 
   @override
   bool operator ==(other) =>
-      other is Table1Record &&
+      other is Table7Record &&
       reference.path.hashCode == other.reference.path.hashCode;
 }
 
-Map<String, dynamic> createTable1RecordData({
+Map<String, dynamic> createTable7RecordData({
   int? tableNumber,
   double? costOfThisPost,
   DateTime? date,
@@ -146,11 +146,11 @@ Map<String, dynamic> createTable1RecordData({
   return firestoreData;
 }
 
-class Table1RecordDocumentEquality implements Equality<Table1Record> {
-  const Table1RecordDocumentEquality();
+class Table7RecordDocumentEquality implements Equality<Table7Record> {
+  const Table7RecordDocumentEquality();
 
   @override
-  bool equals(Table1Record? e1, Table1Record? e2) {
+  bool equals(Table7Record? e1, Table7Record? e2) {
     const listEquality = ListEquality();
     return e1?.tableNumber == e2?.tableNumber &&
         e1?.costOfThisPost == e2?.costOfThisPost &&
@@ -166,7 +166,7 @@ class Table1RecordDocumentEquality implements Equality<Table1Record> {
   }
 
   @override
-  int hash(Table1Record? e) => const ListEquality().hash([
+  int hash(Table7Record? e) => const ListEquality().hash([
         e?.tableNumber,
         e?.costOfThisPost,
         e?.date,
@@ -181,5 +181,5 @@ class Table1RecordDocumentEquality implements Equality<Table1Record> {
       ]);
 
   @override
-  bool isValidKey(Object? o) => o is Table1Record;
+  bool isValidKey(Object? o) => o is Table7Record;
 }

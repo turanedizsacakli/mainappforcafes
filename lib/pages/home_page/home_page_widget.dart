@@ -67,7 +67,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             children: [
               FFButtonWidget(
                 onPressed: () async {
-                  context.pushNamed('deneme');
+                  context.pushNamed('denemeCopy');
                 },
                 text: 'Button',
                 options: FFButtonOptions(
