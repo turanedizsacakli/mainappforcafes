@@ -8,8 +8,8 @@ import '/backend/schema/util/schema_util.dart';
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class Table1Record extends FirestoreRecord {
-  Table1Record._(
+class ArchiveRecord extends FirestoreRecord {
+  ArchiveRecord._(
     super.reference,
     super.data,
   ) {
@@ -66,11 +66,6 @@ class Table1Record extends FirestoreRecord {
   bool get withCashMoney => _withCashMoney ?? false;
   bool hasWithCashMoney() => _withCashMoney != null;
 
-  // "time" field.
-  DateTime? _time;
-  DateTime? get time => _time;
-  bool hasTime() => _time != null;
-
   void _initializeFields() {
     _tableNumber = castToType<int>(snapshotData['tableNumber']);
     _costOfThisPost = castToType<double>(snapshotData['costOfThisPost']);
@@ -82,43 +77,43 @@ class Table1Record extends FirestoreRecord {
     _newOrderList = getDataList(snapshotData['newOrderList']);
     _withCreditCard = snapshotData['withCreditCard'] as bool?;
     _withCashMoney = snapshotData['withCashMoney'] as bool?;
-    _time = snapshotData['time'] as DateTime?;
   }
 
   static CollectionReference get collection =>
-      FirebaseFirestore.instance.collection('table1');
+      FirebaseFirestore.instance.collection('archive');
 
-  static Stream<Table1Record> getDocument(DocumentReference ref) =>
-      ref.snapshots().map((s) => Table1Record.fromSnapshot(s));
+  static Stream<ArchiveRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => ArchiveRecord.fromSnapshot(s));
 
-  static Future<Table1Record> getDocumentOnce(DocumentReference ref) =>
-      ref.get().then((s) => Table1Record.fromSnapshot(s));
+  static Future<ArchiveRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => ArchiveRecord.fromSnapshot(s));
 
-  static Table1Record fromSnapshot(DocumentSnapshot snapshot) => Table1Record._(
+  static ArchiveRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      ArchiveRecord._(
         snapshot.reference,
         mapFromFirestore(snapshot.data() as Map<String, dynamic>),
       );
 
-  static Table1Record getDocumentFromData(
+  static ArchiveRecord getDocumentFromData(
     Map<String, dynamic> data,
     DocumentReference reference,
   ) =>
-      Table1Record._(reference, mapFromFirestore(data));
+      ArchiveRecord._(reference, mapFromFirestore(data));
 
   @override
   String toString() =>
-      'Table1Record(reference: ${reference.path}, data: $snapshotData)';
+      'ArchiveRecord(reference: ${reference.path}, data: $snapshotData)';
 
   @override
   int get hashCode => reference.path.hashCode;
 
   @override
   bool operator ==(other) =>
-      other is Table1Record &&
+      other is ArchiveRecord &&
       reference.path.hashCode == other.reference.path.hashCode;
 }
 
-Map<String, dynamic> createTable1RecordData({
+Map<String, dynamic> createArchiveRecordData({
   int? tableNumber,
   double? costOfThisPost,
   DateTime? date,
@@ -127,7 +122,6 @@ Map<String, dynamic> createTable1RecordData({
   bool? isCostPaid,
   bool? withCreditCard,
   bool? withCashMoney,
-  DateTime? time,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -139,18 +133,17 @@ Map<String, dynamic> createTable1RecordData({
       'isCostPaid': isCostPaid,
       'withCreditCard': withCreditCard,
       'withCashMoney': withCashMoney,
-      'time': time,
     }.withoutNulls,
   );
 
   return firestoreData;
 }
 
-class Table1RecordDocumentEquality implements Equality<Table1Record> {
-  const Table1RecordDocumentEquality();
+class ArchiveRecordDocumentEquality implements Equality<ArchiveRecord> {
+  const ArchiveRecordDocumentEquality();
 
   @override
-  bool equals(Table1Record? e1, Table1Record? e2) {
+  bool equals(ArchiveRecord? e1, ArchiveRecord? e2) {
     const listEquality = ListEquality();
     return e1?.tableNumber == e2?.tableNumber &&
         e1?.costOfThisPost == e2?.costOfThisPost &&
@@ -161,12 +154,11 @@ class Table1RecordDocumentEquality implements Equality<Table1Record> {
         e1?.isCostPaid == e2?.isCostPaid &&
         listEquality.equals(e1?.newOrderList, e2?.newOrderList) &&
         e1?.withCreditCard == e2?.withCreditCard &&
-        e1?.withCashMoney == e2?.withCashMoney &&
-        e1?.time == e2?.time;
+        e1?.withCashMoney == e2?.withCashMoney;
   }
 
   @override
-  int hash(Table1Record? e) => const ListEquality().hash([
+  int hash(ArchiveRecord? e) => const ListEquality().hash([
         e?.tableNumber,
         e?.costOfThisPost,
         e?.date,
@@ -176,10 +168,9 @@ class Table1RecordDocumentEquality implements Equality<Table1Record> {
         e?.isCostPaid,
         e?.newOrderList,
         e?.withCreditCard,
-        e?.withCashMoney,
-        e?.time
+        e?.withCashMoney
       ]);
 
   @override
-  bool isValidKey(Object? o) => o is Table1Record;
+  bool isValidKey(Object? o) => o is ArchiveRecord;
 }

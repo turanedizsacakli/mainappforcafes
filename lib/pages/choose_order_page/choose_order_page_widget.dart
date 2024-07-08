@@ -14,10 +14,32 @@ class ChooseOrderPageWidget extends StatefulWidget {
     super.key,
     this.pageCost,
     this.table1,
+    this.table2,
+    this.table3,
+    this.table4,
+    this.table5,
+    this.table6,
+    this.table7,
+    this.table8,
+    this.table9,
+    this.table10,
+    this.table11,
+    this.table12,
   });
 
   final double? pageCost;
   final Table1Record? table1;
+  final Table2Record? table2;
+  final Table3Record? table3;
+  final Table4Record? table4;
+  final Table5Record? table5;
+  final Table6Record? table6;
+  final Table7Record? table7;
+  final Table8Record? table8;
+  final Table9Record? table9;
+  final Table10Record? table10;
+  final Table11Record? table11;
+  final Table12Record? table12;
 
   @override
   State<ChooseOrderPageWidget> createState() => _ChooseOrderPageWidgetState();
@@ -841,87 +863,1260 @@ class _ChooseOrderPageWidgetState extends State<ChooseOrderPageWidget>
                                                   0.0, 10.0, 0.0, 5.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
-                                              if (widget.table1 != null) {
-                                                await widget.table1!.reference
-                                                    .delete();
-                                                FFAppState()
-                                                    .order = (List<String> var1,
-                                                            List<String> var2) {
-                                                  return var1 = List.from(var1)
-                                                    ..addAll(var2);
-                                                }(
-                                                        FFAppState()
-                                                            .order
-                                                            .toList(),
-                                                        FFAppState()
-                                                            .newOrderList
-                                                            .toList())
-                                                    .toList()
-                                                    .cast<String>();
+                                              if (FFAppState().tableNumber ==
+                                                  1) {
+                                                if (widget.table1 != null) {
+                                                  await widget.table1!.reference
+                                                      .delete();
+                                                  FFAppState().order =
+                                                      (List<String> var1,
+                                                                  List<String>
+                                                                      var2) {
+                                                    return var1 =
+                                                        List.from(var1)
+                                                          ..addAll(var2);
+                                                  }(
+                                                              FFAppState()
+                                                                  .order
+                                                                  .toList(),
+                                                              FFAppState()
+                                                                  .newOrderList
+                                                                  .toList())
+                                                          .toList()
+                                                          .cast<String>();
+                                                  setState(() {});
+
+                                                  await Table1Record.collection
+                                                      .doc()
+                                                      .set({
+                                                    ...createTable1RecordData(
+                                                      tableNumber: FFAppState()
+                                                          .tableNumber,
+                                                      costOfThisPost:
+                                                          FFAppState()
+                                                              .pageTotalCost,
+                                                      waiterName: FFAppState()
+                                                          .waiterName,
+                                                      isOrderReady: false,
+                                                      isCostPaid: false,
+                                                    ),
+                                                    ...mapToFirestore(
+                                                      {
+                                                        'date': FieldValue
+                                                            .serverTimestamp(),
+                                                        'orderList':
+                                                            FFAppState().order,
+                                                        'newOrderList':
+                                                            FFAppState()
+                                                                .newOrderList,
+                                                      },
+                                                    ),
+                                                  });
+                                                } else {
+                                                  await Table1Record.collection
+                                                      .doc()
+                                                      .set({
+                                                    ...createTable1RecordData(
+                                                      tableNumber: FFAppState()
+                                                          .tableNumber,
+                                                      costOfThisPost:
+                                                          FFAppState()
+                                                              .pageTotalCost,
+                                                      waiterName: FFAppState()
+                                                          .waiterName,
+                                                      isOrderReady: false,
+                                                      isCostPaid: false,
+                                                    ),
+                                                    ...mapToFirestore(
+                                                      {
+                                                        'date': FieldValue
+                                                            .serverTimestamp(),
+                                                        'orderList':
+                                                            FFAppState().order,
+                                                        'newOrderList':
+                                                            FFAppState()
+                                                                .newOrderList,
+                                                      },
+                                                    ),
+                                                  });
+                                                }
+
+                                                // clearAll
+                                                FFAppState().order = [];
+                                                FFAppState().deletedTheCost =
+                                                    [];
+                                                FFAppState().pageCost = [];
+                                                FFAppState().pageTotalCost =
+                                                    0.0;
+                                                FFAppState().newOrderList = [];
                                                 setState(() {});
 
-                                                await Table1Record.collection
-                                                    .doc()
-                                                    .set({
-                                                  ...createTable1RecordData(
-                                                    tableNumber: FFAppState()
-                                                        .tableNumber,
-                                                    costOfThisPost: FFAppState()
-                                                        .pageTotalCost,
-                                                    waiterName:
-                                                        FFAppState().waiterName,
-                                                    isOrderReady: false,
-                                                    isCostPaid: false,
-                                                  ),
-                                                  ...mapToFirestore(
-                                                    {
-                                                      'date': FieldValue
-                                                          .serverTimestamp(),
-                                                      'orderList':
-                                                          FFAppState().order,
-                                                      'newOrderList':
-                                                          FFAppState()
-                                                              .newOrderList,
-                                                    },
-                                                  ),
-                                                });
+                                                context
+                                                    .pushNamed('ChooseTable');
                                               } else {
-                                                await Table1Record.collection
-                                                    .doc()
-                                                    .set({
-                                                  ...createTable1RecordData(
-                                                    tableNumber: FFAppState()
-                                                        .tableNumber,
-                                                    costOfThisPost: FFAppState()
-                                                        .pageTotalCost,
-                                                    waiterName:
-                                                        FFAppState().waiterName,
-                                                    isOrderReady: false,
-                                                    isCostPaid: false,
-                                                  ),
-                                                  ...mapToFirestore(
-                                                    {
-                                                      'date': FieldValue
-                                                          .serverTimestamp(),
-                                                      'orderList':
-                                                          FFAppState().order,
-                                                      'newOrderList':
+                                                if (FFAppState().tableNumber ==
+                                                    2) {
+                                                  if (widget.table2 != null) {
+                                                    await widget
+                                                        .table1!.reference
+                                                        .delete();
+                                                    FFAppState().order =
+                                                        (List<String> var1,
+                                                                    List<String>
+                                                                        var2) {
+                                                      return var1 =
+                                                          List.from(var1)
+                                                            ..addAll(var2);
+                                                    }(
+                                                                FFAppState()
+                                                                    .order
+                                                                    .toList(),
+                                                                FFAppState()
+                                                                    .newOrderList
+                                                                    .toList())
+                                                            .toList()
+                                                            .cast<String>();
+                                                    setState(() {});
+
+                                                    await Table2Record
+                                                        .collection
+                                                        .doc()
+                                                        .set({
+                                                      ...createTable2RecordData(
+                                                        tableNumber:
+                                                            FFAppState()
+                                                                .tableNumber,
+                                                        costOfThisPost:
+                                                            FFAppState()
+                                                                .pageTotalCost,
+                                                        waiterName: FFAppState()
+                                                            .waiterName,
+                                                        isOrderReady: false,
+                                                        isCostPaid: false,
+                                                      ),
+                                                      ...mapToFirestore(
+                                                        {
+                                                          'date': FieldValue
+                                                              .serverTimestamp(),
+                                                          'orderList':
+                                                              FFAppState()
+                                                                  .order,
+                                                          'newOrderList':
+                                                              FFAppState()
+                                                                  .newOrderList,
+                                                        },
+                                                      ),
+                                                    });
+                                                  } else {
+                                                    await Table2Record
+                                                        .collection
+                                                        .doc()
+                                                        .set({
+                                                      ...createTable2RecordData(
+                                                        tableNumber:
+                                                            FFAppState()
+                                                                .tableNumber,
+                                                        costOfThisPost:
+                                                            FFAppState()
+                                                                .pageTotalCost,
+                                                        waiterName: FFAppState()
+                                                            .waiterName,
+                                                        isOrderReady: false,
+                                                        isCostPaid: false,
+                                                      ),
+                                                      ...mapToFirestore(
+                                                        {
+                                                          'date': FieldValue
+                                                              .serverTimestamp(),
+                                                          'orderList':
+                                                              FFAppState()
+                                                                  .order,
+                                                          'newOrderList':
+                                                              FFAppState()
+                                                                  .newOrderList,
+                                                        },
+                                                      ),
+                                                    });
+                                                  }
+
+                                                  // clearAll
+                                                  FFAppState().order = [];
+                                                  FFAppState().deletedTheCost =
+                                                      [];
+                                                  FFAppState().pageCost = [];
+                                                  FFAppState().pageTotalCost =
+                                                      0.0;
+                                                  FFAppState().newOrderList =
+                                                      [];
+                                                  setState(() {});
+
+                                                  context
+                                                      .pushNamed('ChooseTable');
+                                                } else {
+                                                  if (FFAppState()
+                                                          .tableNumber ==
+                                                      3) {
+                                                    if (widget.table3 != null) {
+                                                      await widget
+                                                          .table3!.reference
+                                                          .delete();
+                                                      FFAppState()
+                                                          .order = (List<String>
+                                                                      var1,
+                                                                  List<String>
+                                                                      var2) {
+                                                        return var1 =
+                                                            List.from(var1)
+                                                              ..addAll(var2);
+                                                      }(
+                                                              FFAppState()
+                                                                  .order
+                                                                  .toList(),
+                                                              FFAppState()
+                                                                  .newOrderList
+                                                                  .toList())
+                                                          .toList()
+                                                          .cast<String>();
+                                                      setState(() {});
+
+                                                      await Table3Record
+                                                          .collection
+                                                          .doc()
+                                                          .set({
+                                                        ...createTable3RecordData(
+                                                          tableNumber:
+                                                              FFAppState()
+                                                                  .tableNumber,
+                                                          costOfThisPost:
+                                                              FFAppState()
+                                                                  .pageTotalCost,
+                                                          waiterName:
+                                                              FFAppState()
+                                                                  .waiterName,
+                                                          isOrderReady: false,
+                                                          isCostPaid: false,
+                                                        ),
+                                                        ...mapToFirestore(
+                                                          {
+                                                            'date': FieldValue
+                                                                .serverTimestamp(),
+                                                            'orderList':
+                                                                FFAppState()
+                                                                    .order,
+                                                            'newOrderList':
+                                                                FFAppState()
+                                                                    .newOrderList,
+                                                          },
+                                                        ),
+                                                      });
+                                                    } else {
+                                                      await Table3Record
+                                                          .collection
+                                                          .doc()
+                                                          .set({
+                                                        ...createTable3RecordData(
+                                                          tableNumber:
+                                                              FFAppState()
+                                                                  .tableNumber,
+                                                          costOfThisPost:
+                                                              FFAppState()
+                                                                  .pageTotalCost,
+                                                          waiterName:
+                                                              FFAppState()
+                                                                  .waiterName,
+                                                          isOrderReady: false,
+                                                          isCostPaid: false,
+                                                        ),
+                                                        ...mapToFirestore(
+                                                          {
+                                                            'date': FieldValue
+                                                                .serverTimestamp(),
+                                                            'orderList':
+                                                                FFAppState()
+                                                                    .order,
+                                                            'newOrderList':
+                                                                FFAppState()
+                                                                    .newOrderList,
+                                                          },
+                                                        ),
+                                                      });
+                                                    }
+
+                                                    // clearAll
+                                                    FFAppState().order = [];
+                                                    FFAppState()
+                                                        .deletedTheCost = [];
+                                                    FFAppState().pageCost = [];
+                                                    FFAppState().pageTotalCost =
+                                                        0.0;
+                                                    FFAppState().newOrderList =
+                                                        [];
+                                                    setState(() {});
+
+                                                    context.pushNamed(
+                                                        'ChooseTable');
+                                                  } else {
+                                                    if (FFAppState()
+                                                            .tableNumber ==
+                                                        4) {
+                                                      if (widget.table4 !=
+                                                          null) {
+                                                        await widget
+                                                            .table4!.reference
+                                                            .delete();
+                                                        FFAppState()
+                                                            .order = (List<String>
+                                                                        var1,
+                                                                    List<String>
+                                                                        var2) {
+                                                          return var1 =
+                                                              List.from(var1)
+                                                                ..addAll(var2);
+                                                        }(
+                                                                FFAppState()
+                                                                    .order
+                                                                    .toList(),
+                                                                FFAppState()
+                                                                    .newOrderList
+                                                                    .toList())
+                                                            .toList()
+                                                            .cast<String>();
+                                                        setState(() {});
+
+                                                        await Table4Record
+                                                            .collection
+                                                            .doc()
+                                                            .set({
+                                                          ...createTable4RecordData(
+                                                            tableNumber:
+                                                                FFAppState()
+                                                                    .tableNumber,
+                                                            costOfThisPost:
+                                                                FFAppState()
+                                                                    .pageTotalCost,
+                                                            waiterName:
+                                                                FFAppState()
+                                                                    .waiterName,
+                                                            isOrderReady: false,
+                                                            isCostPaid: false,
+                                                          ),
+                                                          ...mapToFirestore(
+                                                            {
+                                                              'date': FieldValue
+                                                                  .serverTimestamp(),
+                                                              'orderList':
+                                                                  FFAppState()
+                                                                      .order,
+                                                              'newOrderList':
+                                                                  FFAppState()
+                                                                      .newOrderList,
+                                                            },
+                                                          ),
+                                                        });
+                                                      } else {
+                                                        await Table4Record
+                                                            .collection
+                                                            .doc()
+                                                            .set({
+                                                          ...createTable4RecordData(
+                                                            tableNumber:
+                                                                FFAppState()
+                                                                    .tableNumber,
+                                                            costOfThisPost:
+                                                                FFAppState()
+                                                                    .pageTotalCost,
+                                                            waiterName:
+                                                                FFAppState()
+                                                                    .waiterName,
+                                                            isOrderReady: false,
+                                                            isCostPaid: false,
+                                                          ),
+                                                          ...mapToFirestore(
+                                                            {
+                                                              'date': FieldValue
+                                                                  .serverTimestamp(),
+                                                              'orderList':
+                                                                  FFAppState()
+                                                                      .order,
+                                                              'newOrderList':
+                                                                  FFAppState()
+                                                                      .newOrderList,
+                                                            },
+                                                          ),
+                                                        });
+                                                      }
+
+                                                      // clearAll
+                                                      FFAppState().order = [];
+                                                      FFAppState()
+                                                          .deletedTheCost = [];
+                                                      FFAppState().pageCost =
+                                                          [];
+                                                      FFAppState()
+                                                          .pageTotalCost = 0.0;
+                                                      FFAppState()
+                                                          .newOrderList = [];
+                                                      setState(() {});
+
+                                                      context.pushNamed(
+                                                          'ChooseTable');
+                                                    } else {
+                                                      if (FFAppState()
+                                                              .tableNumber ==
+                                                          5) {
+                                                        if (widget.table5 !=
+                                                            null) {
+                                                          await widget
+                                                              .table5!.reference
+                                                              .delete();
                                                           FFAppState()
-                                                              .newOrderList,
-                                                    },
-                                                  ),
-                                                });
+                                                              .order = (List<String>
+                                                                          var1,
+                                                                      List<String>
+                                                                          var2) {
+                                                            return var1 = List
+                                                                .from(var1)
+                                                              ..addAll(var2);
+                                                          }(
+                                                                  FFAppState()
+                                                                      .order
+                                                                      .toList(),
+                                                                  FFAppState()
+                                                                      .newOrderList
+                                                                      .toList())
+                                                              .toList()
+                                                              .cast<String>();
+                                                          setState(() {});
+
+                                                          await Table5Record
+                                                              .collection
+                                                              .doc()
+                                                              .set({
+                                                            ...createTable5RecordData(
+                                                              tableNumber:
+                                                                  FFAppState()
+                                                                      .tableNumber,
+                                                              costOfThisPost:
+                                                                  FFAppState()
+                                                                      .pageTotalCost,
+                                                              waiterName:
+                                                                  FFAppState()
+                                                                      .waiterName,
+                                                              isOrderReady:
+                                                                  false,
+                                                              isCostPaid: false,
+                                                            ),
+                                                            ...mapToFirestore(
+                                                              {
+                                                                'date': FieldValue
+                                                                    .serverTimestamp(),
+                                                                'orderList':
+                                                                    FFAppState()
+                                                                        .order,
+                                                                'newOrderList':
+                                                                    FFAppState()
+                                                                        .newOrderList,
+                                                              },
+                                                            ),
+                                                          });
+                                                        } else {
+                                                          await Table5Record
+                                                              .collection
+                                                              .doc()
+                                                              .set({
+                                                            ...createTable5RecordData(
+                                                              tableNumber:
+                                                                  FFAppState()
+                                                                      .tableNumber,
+                                                              costOfThisPost:
+                                                                  FFAppState()
+                                                                      .pageTotalCost,
+                                                              waiterName:
+                                                                  FFAppState()
+                                                                      .waiterName,
+                                                              isOrderReady:
+                                                                  false,
+                                                              isCostPaid: false,
+                                                            ),
+                                                            ...mapToFirestore(
+                                                              {
+                                                                'date': FieldValue
+                                                                    .serverTimestamp(),
+                                                                'orderList':
+                                                                    FFAppState()
+                                                                        .order,
+                                                                'newOrderList':
+                                                                    FFAppState()
+                                                                        .newOrderList,
+                                                              },
+                                                            ),
+                                                          });
+                                                        }
+
+                                                        // clearAll
+                                                        FFAppState().order = [];
+                                                        FFAppState()
+                                                            .deletedTheCost = [];
+                                                        FFAppState().pageCost =
+                                                            [];
+                                                        FFAppState()
+                                                                .pageTotalCost =
+                                                            0.0;
+                                                        FFAppState()
+                                                            .newOrderList = [];
+                                                        setState(() {});
+
+                                                        context.pushNamed(
+                                                            'ChooseTable');
+                                                      } else {
+                                                        if (FFAppState()
+                                                                .tableNumber ==
+                                                            6) {
+                                                          if (widget.table6 !=
+                                                              null) {
+                                                            await widget.table6!
+                                                                .reference
+                                                                .delete();
+                                                            FFAppState()
+                                                                .order = (List<String>
+                                                                            var1,
+                                                                        List<String>
+                                                                            var2) {
+                                                              return var1 = List
+                                                                  .from(var1)
+                                                                ..addAll(var2);
+                                                            }(
+                                                                    FFAppState()
+                                                                        .order
+                                                                        .toList(),
+                                                                    FFAppState()
+                                                                        .newOrderList
+                                                                        .toList())
+                                                                .toList()
+                                                                .cast<String>();
+                                                            setState(() {});
+
+                                                            await Table6Record
+                                                                .collection
+                                                                .doc()
+                                                                .set({
+                                                              ...createTable6RecordData(
+                                                                tableNumber:
+                                                                    FFAppState()
+                                                                        .tableNumber,
+                                                                costOfThisPost:
+                                                                    FFAppState()
+                                                                        .pageTotalCost,
+                                                                waiterName:
+                                                                    FFAppState()
+                                                                        .waiterName,
+                                                                isOrderReady:
+                                                                    false,
+                                                                isCostPaid:
+                                                                    false,
+                                                              ),
+                                                              ...mapToFirestore(
+                                                                {
+                                                                  'date': FieldValue
+                                                                      .serverTimestamp(),
+                                                                  'orderList':
+                                                                      FFAppState()
+                                                                          .order,
+                                                                  'newOrderList':
+                                                                      FFAppState()
+                                                                          .newOrderList,
+                                                                },
+                                                              ),
+                                                            });
+                                                          } else {
+                                                            await Table6Record
+                                                                .collection
+                                                                .doc()
+                                                                .set({
+                                                              ...createTable6RecordData(
+                                                                tableNumber:
+                                                                    FFAppState()
+                                                                        .tableNumber,
+                                                                costOfThisPost:
+                                                                    FFAppState()
+                                                                        .pageTotalCost,
+                                                                waiterName:
+                                                                    FFAppState()
+                                                                        .waiterName,
+                                                                isOrderReady:
+                                                                    false,
+                                                                isCostPaid:
+                                                                    false,
+                                                              ),
+                                                              ...mapToFirestore(
+                                                                {
+                                                                  'date': FieldValue
+                                                                      .serverTimestamp(),
+                                                                  'orderList':
+                                                                      FFAppState()
+                                                                          .order,
+                                                                  'newOrderList':
+                                                                      FFAppState()
+                                                                          .newOrderList,
+                                                                },
+                                                              ),
+                                                            });
+                                                          }
+
+                                                          // clearAll
+                                                          FFAppState().order =
+                                                              [];
+                                                          FFAppState()
+                                                              .deletedTheCost = [];
+                                                          FFAppState()
+                                                              .pageCost = [];
+                                                          FFAppState()
+                                                                  .pageTotalCost =
+                                                              0.0;
+                                                          FFAppState()
+                                                              .newOrderList = [];
+                                                          setState(() {});
+
+                                                          context.pushNamed(
+                                                              'ChooseTable');
+                                                        } else {
+                                                          if (FFAppState()
+                                                                  .tableNumber ==
+                                                              7) {
+                                                            if (widget.table7 !=
+                                                                null) {
+                                                              await widget
+                                                                  .table7!
+                                                                  .reference
+                                                                  .delete();
+                                                              FFAppState()
+                                                                  .order = (List<String>
+                                                                              var1,
+                                                                          List<String>
+                                                                              var2) {
+                                                                return var1 =
+                                                                    List.from(
+                                                                        var1)
+                                                                      ..addAll(
+                                                                          var2);
+                                                              }(
+                                                                      FFAppState()
+                                                                          .order
+                                                                          .toList(),
+                                                                      FFAppState()
+                                                                          .newOrderList
+                                                                          .toList())
+                                                                  .toList()
+                                                                  .cast<
+                                                                      String>();
+                                                              setState(() {});
+
+                                                              await Table7Record
+                                                                  .collection
+                                                                  .doc()
+                                                                  .set({
+                                                                ...createTable7RecordData(
+                                                                  tableNumber:
+                                                                      FFAppState()
+                                                                          .tableNumber,
+                                                                  costOfThisPost:
+                                                                      FFAppState()
+                                                                          .pageTotalCost,
+                                                                  waiterName:
+                                                                      FFAppState()
+                                                                          .waiterName,
+                                                                  isOrderReady:
+                                                                      false,
+                                                                  isCostPaid:
+                                                                      false,
+                                                                ),
+                                                                ...mapToFirestore(
+                                                                  {
+                                                                    'date': FieldValue
+                                                                        .serverTimestamp(),
+                                                                    'orderList':
+                                                                        FFAppState()
+                                                                            .order,
+                                                                    'newOrderList':
+                                                                        FFAppState()
+                                                                            .newOrderList,
+                                                                  },
+                                                                ),
+                                                              });
+                                                            } else {
+                                                              await Table7Record
+                                                                  .collection
+                                                                  .doc()
+                                                                  .set({
+                                                                ...createTable7RecordData(
+                                                                  tableNumber:
+                                                                      FFAppState()
+                                                                          .tableNumber,
+                                                                  costOfThisPost:
+                                                                      FFAppState()
+                                                                          .pageTotalCost,
+                                                                  waiterName:
+                                                                      FFAppState()
+                                                                          .waiterName,
+                                                                  isOrderReady:
+                                                                      false,
+                                                                  isCostPaid:
+                                                                      false,
+                                                                ),
+                                                                ...mapToFirestore(
+                                                                  {
+                                                                    'date': FieldValue
+                                                                        .serverTimestamp(),
+                                                                    'orderList':
+                                                                        FFAppState()
+                                                                            .order,
+                                                                    'newOrderList':
+                                                                        FFAppState()
+                                                                            .newOrderList,
+                                                                  },
+                                                                ),
+                                                              });
+                                                            }
+
+                                                            // clearAll
+                                                            FFAppState().order =
+                                                                [];
+                                                            FFAppState()
+                                                                .deletedTheCost = [];
+                                                            FFAppState()
+                                                                .pageCost = [];
+                                                            FFAppState()
+                                                                    .pageTotalCost =
+                                                                0.0;
+                                                            FFAppState()
+                                                                .newOrderList = [];
+                                                            setState(() {});
+
+                                                            context.pushNamed(
+                                                                'ChooseTable');
+                                                          } else {
+                                                            if (FFAppState()
+                                                                    .tableNumber ==
+                                                                8) {
+                                                              if (widget
+                                                                      .table8 !=
+                                                                  null) {
+                                                                await widget
+                                                                    .table8!
+                                                                    .reference
+                                                                    .delete();
+                                                                FFAppState().order = (List<String>
+                                                                                var1,
+                                                                            List<String>
+                                                                                var2) {
+                                                                  return var1 =
+                                                                      List.from(
+                                                                          var1)
+                                                                        ..addAll(
+                                                                            var2);
+                                                                }(
+                                                                        FFAppState()
+                                                                            .order
+                                                                            .toList(),
+                                                                        FFAppState()
+                                                                            .newOrderList
+                                                                            .toList())
+                                                                    .toList()
+                                                                    .cast<
+                                                                        String>();
+                                                                setState(() {});
+
+                                                                await Table8Record
+                                                                    .collection
+                                                                    .doc()
+                                                                    .set({
+                                                                  ...createTable8RecordData(
+                                                                    tableNumber:
+                                                                        FFAppState()
+                                                                            .tableNumber,
+                                                                    costOfThisPost:
+                                                                        FFAppState()
+                                                                            .pageTotalCost,
+                                                                    waiterName:
+                                                                        FFAppState()
+                                                                            .waiterName,
+                                                                    isOrderReady:
+                                                                        false,
+                                                                    isCostPaid:
+                                                                        false,
+                                                                  ),
+                                                                  ...mapToFirestore(
+                                                                    {
+                                                                      'date': FieldValue
+                                                                          .serverTimestamp(),
+                                                                      'orderList':
+                                                                          FFAppState()
+                                                                              .order,
+                                                                      'newOrderList':
+                                                                          FFAppState()
+                                                                              .newOrderList,
+                                                                    },
+                                                                  ),
+                                                                });
+                                                              } else {
+                                                                await Table8Record
+                                                                    .collection
+                                                                    .doc()
+                                                                    .set({
+                                                                  ...createTable8RecordData(
+                                                                    tableNumber:
+                                                                        FFAppState()
+                                                                            .tableNumber,
+                                                                    costOfThisPost:
+                                                                        FFAppState()
+                                                                            .pageTotalCost,
+                                                                    waiterName:
+                                                                        FFAppState()
+                                                                            .waiterName,
+                                                                    isOrderReady:
+                                                                        false,
+                                                                    isCostPaid:
+                                                                        false,
+                                                                  ),
+                                                                  ...mapToFirestore(
+                                                                    {
+                                                                      'date': FieldValue
+                                                                          .serverTimestamp(),
+                                                                      'orderList':
+                                                                          FFAppState()
+                                                                              .order,
+                                                                      'newOrderList':
+                                                                          FFAppState()
+                                                                              .newOrderList,
+                                                                    },
+                                                                  ),
+                                                                });
+                                                              }
+
+                                                              // clearAll
+                                                              FFAppState()
+                                                                  .order = [];
+                                                              FFAppState()
+                                                                  .deletedTheCost = [];
+                                                              FFAppState()
+                                                                  .pageCost = [];
+                                                              FFAppState()
+                                                                      .pageTotalCost =
+                                                                  0.0;
+                                                              FFAppState()
+                                                                  .newOrderList = [];
+                                                              setState(() {});
+
+                                                              context.pushNamed(
+                                                                  'ChooseTable');
+                                                            } else {
+                                                              if (FFAppState()
+                                                                      .tableNumber ==
+                                                                  9) {
+                                                                if (widget
+                                                                        .table9 !=
+                                                                    null) {
+                                                                  await widget
+                                                                      .table9!
+                                                                      .reference
+                                                                      .delete();
+                                                                  FFAppState()
+                                                                      .order = (List<String>
+                                                                              var1,
+                                                                          List<String>
+                                                                              var2) {
+                                                                    return var1 = List
+                                                                        .from(
+                                                                            var1)
+                                                                      ..addAll(
+                                                                          var2);
+                                                                  }(FFAppState().order.toList(), FFAppState().newOrderList.toList())
+                                                                      .toList()
+                                                                      .cast<String>();
+                                                                  setState(
+                                                                      () {});
+
+                                                                  await Table9Record
+                                                                      .collection
+                                                                      .doc()
+                                                                      .set({
+                                                                    ...createTable9RecordData(
+                                                                      tableNumber:
+                                                                          FFAppState()
+                                                                              .tableNumber,
+                                                                      costOfThisPost:
+                                                                          FFAppState()
+                                                                              .pageTotalCost,
+                                                                      waiterName:
+                                                                          FFAppState()
+                                                                              .waiterName,
+                                                                      isOrderReady:
+                                                                          false,
+                                                                      isCostPaid:
+                                                                          false,
+                                                                    ),
+                                                                    ...mapToFirestore(
+                                                                      {
+                                                                        'date':
+                                                                            FieldValue.serverTimestamp(),
+                                                                        'orderList':
+                                                                            FFAppState().order,
+                                                                        'newOrderList':
+                                                                            FFAppState().newOrderList,
+                                                                      },
+                                                                    ),
+                                                                  });
+                                                                } else {
+                                                                  await Table9Record
+                                                                      .collection
+                                                                      .doc()
+                                                                      .set({
+                                                                    ...createTable9RecordData(
+                                                                      tableNumber:
+                                                                          FFAppState()
+                                                                              .tableNumber,
+                                                                      costOfThisPost:
+                                                                          FFAppState()
+                                                                              .pageTotalCost,
+                                                                      waiterName:
+                                                                          FFAppState()
+                                                                              .waiterName,
+                                                                      isOrderReady:
+                                                                          false,
+                                                                      isCostPaid:
+                                                                          false,
+                                                                    ),
+                                                                    ...mapToFirestore(
+                                                                      {
+                                                                        'date':
+                                                                            FieldValue.serverTimestamp(),
+                                                                        'orderList':
+                                                                            FFAppState().order,
+                                                                        'newOrderList':
+                                                                            FFAppState().newOrderList,
+                                                                      },
+                                                                    ),
+                                                                  });
+                                                                }
+
+                                                                // clearAll
+                                                                FFAppState()
+                                                                    .order = [];
+                                                                FFAppState()
+                                                                    .deletedTheCost = [];
+                                                                FFAppState()
+                                                                    .pageCost = [];
+                                                                FFAppState()
+                                                                        .pageTotalCost =
+                                                                    0.0;
+                                                                FFAppState()
+                                                                    .newOrderList = [];
+                                                                setState(() {});
+
+                                                                context.pushNamed(
+                                                                    'ChooseTable');
+                                                              } else {
+                                                                if (FFAppState()
+                                                                        .tableNumber ==
+                                                                    10) {
+                                                                  if (widget
+                                                                          .table10 !=
+                                                                      null) {
+                                                                    await widget
+                                                                        .table10!
+                                                                        .reference
+                                                                        .delete();
+                                                                    FFAppState()
+                                                                        .order = (List<String>
+                                                                                var1,
+                                                                            List<String>
+                                                                                var2) {
+                                                                      return var1 = List
+                                                                          .from(
+                                                                              var1)
+                                                                        ..addAll(
+                                                                            var2);
+                                                                    }(FFAppState().order.toList(), FFAppState().newOrderList.toList())
+                                                                        .toList()
+                                                                        .cast<String>();
+                                                                    setState(
+                                                                        () {});
+
+                                                                    await Table10Record
+                                                                        .collection
+                                                                        .doc()
+                                                                        .set({
+                                                                      ...createTable10RecordData(
+                                                                        tableNumber:
+                                                                            FFAppState().tableNumber,
+                                                                        costOfThisPost:
+                                                                            FFAppState().pageTotalCost,
+                                                                        waiterName:
+                                                                            FFAppState().waiterName,
+                                                                        isOrderReady:
+                                                                            false,
+                                                                        isCostPaid:
+                                                                            false,
+                                                                      ),
+                                                                      ...mapToFirestore(
+                                                                        {
+                                                                          'date':
+                                                                              FieldValue.serverTimestamp(),
+                                                                          'orderList':
+                                                                              FFAppState().order,
+                                                                          'newOrderList':
+                                                                              FFAppState().newOrderList,
+                                                                        },
+                                                                      ),
+                                                                    });
+                                                                  } else {
+                                                                    await Table10Record
+                                                                        .collection
+                                                                        .doc()
+                                                                        .set({
+                                                                      ...createTable10RecordData(
+                                                                        tableNumber:
+                                                                            FFAppState().tableNumber,
+                                                                        costOfThisPost:
+                                                                            FFAppState().pageTotalCost,
+                                                                        waiterName:
+                                                                            FFAppState().waiterName,
+                                                                        isOrderReady:
+                                                                            false,
+                                                                        isCostPaid:
+                                                                            false,
+                                                                      ),
+                                                                      ...mapToFirestore(
+                                                                        {
+                                                                          'date':
+                                                                              FieldValue.serverTimestamp(),
+                                                                          'orderList':
+                                                                              FFAppState().order,
+                                                                          'newOrderList':
+                                                                              FFAppState().newOrderList,
+                                                                        },
+                                                                      ),
+                                                                    });
+                                                                  }
+
+                                                                  // clearAll
+                                                                  FFAppState()
+                                                                      .order = [];
+                                                                  FFAppState()
+                                                                      .deletedTheCost = [];
+                                                                  FFAppState()
+                                                                      .pageCost = [];
+                                                                  FFAppState()
+                                                                          .pageTotalCost =
+                                                                      0.0;
+                                                                  FFAppState()
+                                                                      .newOrderList = [];
+                                                                  setState(
+                                                                      () {});
+
+                                                                  context.pushNamed(
+                                                                      'ChooseTable');
+                                                                } else {
+                                                                  if (FFAppState()
+                                                                          .tableNumber ==
+                                                                      11) {
+                                                                    if (widget
+                                                                            .table11 !=
+                                                                        null) {
+                                                                      await widget
+                                                                          .table11!
+                                                                          .reference
+                                                                          .delete();
+                                                                      FFAppState()
+                                                                          .order = (List<String> var1,
+                                                                              List<String> var2) {
+                                                                        return var1 = List.from(
+                                                                            var1)
+                                                                          ..addAll(
+                                                                              var2);
+                                                                      }(FFAppState().order.toList(), FFAppState().newOrderList.toList())
+                                                                          .toList()
+                                                                          .cast<String>();
+                                                                      setState(
+                                                                          () {});
+
+                                                                      await Table11Record
+                                                                          .collection
+                                                                          .doc()
+                                                                          .set({
+                                                                        ...createTable11RecordData(
+                                                                          tableNumber:
+                                                                              FFAppState().tableNumber,
+                                                                          costOfThisPost:
+                                                                              FFAppState().pageTotalCost,
+                                                                          waiterName:
+                                                                              FFAppState().waiterName,
+                                                                          isOrderReady:
+                                                                              false,
+                                                                          isCostPaid:
+                                                                              false,
+                                                                        ),
+                                                                        ...mapToFirestore(
+                                                                          {
+                                                                            'date':
+                                                                                FieldValue.serverTimestamp(),
+                                                                            'orderList':
+                                                                                FFAppState().order,
+                                                                            'newOrderList':
+                                                                                FFAppState().newOrderList,
+                                                                          },
+                                                                        ),
+                                                                      });
+                                                                    } else {
+                                                                      await Table11Record
+                                                                          .collection
+                                                                          .doc()
+                                                                          .set({
+                                                                        ...createTable11RecordData(
+                                                                          tableNumber:
+                                                                              FFAppState().tableNumber,
+                                                                          costOfThisPost:
+                                                                              FFAppState().pageTotalCost,
+                                                                          waiterName:
+                                                                              FFAppState().waiterName,
+                                                                          isOrderReady:
+                                                                              false,
+                                                                          isCostPaid:
+                                                                              false,
+                                                                        ),
+                                                                        ...mapToFirestore(
+                                                                          {
+                                                                            'date':
+                                                                                FieldValue.serverTimestamp(),
+                                                                            'orderList':
+                                                                                FFAppState().order,
+                                                                            'newOrderList':
+                                                                                FFAppState().newOrderList,
+                                                                          },
+                                                                        ),
+                                                                      });
+                                                                    }
+
+                                                                    // clearAll
+                                                                    FFAppState()
+                                                                        .order = [];
+                                                                    FFAppState()
+                                                                        .deletedTheCost = [];
+                                                                    FFAppState()
+                                                                        .pageCost = [];
+                                                                    FFAppState()
+                                                                            .pageTotalCost =
+                                                                        0.0;
+                                                                    FFAppState()
+                                                                        .newOrderList = [];
+                                                                    setState(
+                                                                        () {});
+
+                                                                    context.pushNamed(
+                                                                        'ChooseTable');
+                                                                  } else {
+                                                                    if (FFAppState()
+                                                                            .tableNumber ==
+                                                                        12) {
+                                                                      if (widget
+                                                                              .table12 !=
+                                                                          null) {
+                                                                        await widget
+                                                                            .table12!
+                                                                            .reference
+                                                                            .delete();
+                                                                        FFAppState()
+                                                                            .order = (List<String> var1,
+                                                                                List<String> var2) {
+                                                                          return var1 = List.from(
+                                                                              var1)
+                                                                            ..addAll(var2);
+                                                                        }(FFAppState().order.toList(), FFAppState().newOrderList.toList())
+                                                                            .toList()
+                                                                            .cast<String>();
+                                                                        setState(
+                                                                            () {});
+
+                                                                        await Table12Record
+                                                                            .collection
+                                                                            .doc()
+                                                                            .set({
+                                                                          ...createTable12RecordData(
+                                                                            tableNumber:
+                                                                                FFAppState().tableNumber,
+                                                                            costOfThisPost:
+                                                                                FFAppState().pageTotalCost,
+                                                                            waiterName:
+                                                                                FFAppState().waiterName,
+                                                                            isOrderReady:
+                                                                                false,
+                                                                            isCostPaid:
+                                                                                false,
+                                                                          ),
+                                                                          ...mapToFirestore(
+                                                                            {
+                                                                              'date': FieldValue.serverTimestamp(),
+                                                                              'orderList': FFAppState().order,
+                                                                              'newOrderList': FFAppState().newOrderList,
+                                                                            },
+                                                                          ),
+                                                                        });
+                                                                      } else {
+                                                                        await Table12Record
+                                                                            .collection
+                                                                            .doc()
+                                                                            .set({
+                                                                          ...createTable12RecordData(
+                                                                            tableNumber:
+                                                                                FFAppState().tableNumber,
+                                                                            costOfThisPost:
+                                                                                FFAppState().pageTotalCost,
+                                                                            waiterName:
+                                                                                FFAppState().waiterName,
+                                                                            isOrderReady:
+                                                                                false,
+                                                                            isCostPaid:
+                                                                                false,
+                                                                          ),
+                                                                          ...mapToFirestore(
+                                                                            {
+                                                                              'date': FieldValue.serverTimestamp(),
+                                                                              'orderList': FFAppState().order,
+                                                                              'newOrderList': FFAppState().newOrderList,
+                                                                            },
+                                                                          ),
+                                                                        });
+                                                                      }
+
+                                                                      // clearAll
+                                                                      FFAppState()
+                                                                          .order = [];
+                                                                      FFAppState()
+                                                                          .deletedTheCost = [];
+                                                                      FFAppState()
+                                                                          .pageCost = [];
+                                                                      FFAppState()
+                                                                              .pageTotalCost =
+                                                                          0.0;
+                                                                      FFAppState()
+                                                                          .newOrderList = [];
+                                                                      setState(
+                                                                          () {});
+
+                                                                      context.pushNamed(
+                                                                          'ChooseTable');
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
                                               }
-
-                                              // clearAll
-                                              FFAppState().order = [];
-                                              FFAppState().deletedTheCost = [];
-                                              FFAppState().pageCost = [];
-                                              FFAppState().pageTotalCost = 0.0;
-                                              FFAppState().newOrderList = [];
-                                              setState(() {});
-
-                                              context.pushNamed('ChooseTable');
                                             },
                                             text: '~ EKLE ~',
                                             options: FFButtonOptions(
