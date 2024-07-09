@@ -327,6 +327,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                       );
                     }
                     List<MealsRecord> columnMealsRecordList = snapshot.data!;
+
                     return SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,

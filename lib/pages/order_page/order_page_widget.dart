@@ -125,6 +125,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                 }
                                 List<Table1Record> containerTable1RecordList =
                                     snapshot.data!;
+
                                 // Return an empty Container when the item does not exist.
                                 if (snapshot.data!.isEmpty) {
                                   return Container();
@@ -205,6 +206,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                               List<Table1Record>
                                                   columnTable1RecordList =
                                                   snapshot.data!;
+
                                               final columnTable1Record =
                                                   columnTable1RecordList
                                                           .isNotEmpty
@@ -218,6 +220,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                               ?.newOrderList
                                                               .toList() ??
                                                           [];
+
                                                   return Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -287,6 +290,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                             List<Table1Record>
                                                 iconTable1RecordList =
                                                 snapshot.data!;
+
                                             // Return an empty Container when the item does not exist.
                                             if (snapshot.data!.isEmpty) {
                                               return Container();
@@ -353,6 +357,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                               }
                               List<Table2Record> containerTable2RecordList =
                                   snapshot.data!;
+
                               // Return an empty Container when the item does not exist.
                               if (snapshot.data!.isEmpty) {
                                 return Container();
@@ -429,6 +434,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                             List<Table2Record>
                                                 columnTable2RecordList =
                                                 snapshot.data!;
+
                                             // Return an empty Container when the item does not exist.
                                             if (snapshot.data!.isEmpty) {
                                               return Container();
@@ -446,6 +452,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                             ?.newOrderList
                                                             .toList() ??
                                                         [];
+
                                                 return Column(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -514,6 +521,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                           List<Table2Record>
                                               iconTable2RecordList =
                                               snapshot.data!;
+
                                           // Return an empty Container when the item does not exist.
                                           if (snapshot.data!.isEmpty) {
                                             return Container();
@@ -578,6 +586,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                               }
                               List<Table3Record> containerTable3RecordList =
                                   snapshot.data!;
+
                               // Return an empty Container when the item does not exist.
                               if (snapshot.data!.isEmpty) {
                                 return Container();
@@ -657,6 +666,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                             List<Table3Record>
                                                 columnTable3RecordList =
                                                 snapshot.data!;
+
                                             // Return an empty Container when the item does not exist.
                                             if (snapshot.data!.isEmpty) {
                                               return Container();
@@ -674,6 +684,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                             ?.newOrderList
                                                             .toList() ??
                                                         [];
+
                                                 return Column(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -742,6 +753,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                           List<Table3Record>
                                               iconTable3RecordList =
                                               snapshot.data!;
+
                                           // Return an empty Container when the item does not exist.
                                           if (snapshot.data!.isEmpty) {
                                             return Container();
@@ -806,6 +818,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                               }
                               List<Table4Record> containerTable4RecordList =
                                   snapshot.data!;
+
                               // Return an empty Container when the item does not exist.
                               if (snapshot.data!.isEmpty) {
                                 return Container();
@@ -885,6 +898,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                             List<Table4Record>
                                                 columnTable4RecordList =
                                                 snapshot.data!;
+
                                             // Return an empty Container when the item does not exist.
                                             if (snapshot.data!.isEmpty) {
                                               return Container();
@@ -902,6 +916,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                             ?.newOrderList
                                                             .toList() ??
                                                         [];
+
                                                 return Column(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -970,6 +985,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                           List<Table1Record>
                                               iconTable1RecordList =
                                               snapshot.data!;
+
                                           // Return an empty Container when the item does not exist.
                                           if (snapshot.data!.isEmpty) {
                                             return Container();
@@ -1034,6 +1050,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                               }
                               List<Table5Record> containerTable5RecordList =
                                   snapshot.data!;
+
                               // Return an empty Container when the item does not exist.
                               if (snapshot.data!.isEmpty) {
                                 return Container();
@@ -1113,6 +1130,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                             List<Table5Record>
                                                 columnTable5RecordList =
                                                 snapshot.data!;
+
                                             // Return an empty Container when the item does not exist.
                                             if (snapshot.data!.isEmpty) {
                                               return Container();
@@ -1130,6 +1148,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                             ?.newOrderList
                                                             .toList() ??
                                                         [];
+
                                                 return Column(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -1198,6 +1217,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                           List<Table5Record>
                                               iconTable5RecordList =
                                               snapshot.data!;
+
                                           // Return an empty Container when the item does not exist.
                                           if (snapshot.data!.isEmpty) {
                                             return Container();
@@ -1264,6 +1284,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                 }
                                 List<Table6Record> containerTable6RecordList =
                                     snapshot.data!;
+
                                 // Return an empty Container when the item does not exist.
                                 if (snapshot.data!.isEmpty) {
                                   return Container();
@@ -1344,6 +1365,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                               List<Table6Record>
                                                   columnTable6RecordList =
                                                   snapshot.data!;
+
                                               // Return an empty Container when the item does not exist.
                                               if (snapshot.data!.isEmpty) {
                                                 return Container();
@@ -1361,6 +1383,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                               ?.newOrderList
                                                               .toList() ??
                                                           [];
+
                                                   return Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -1430,6 +1453,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                             List<Table6Record>
                                                 iconTable6RecordList =
                                                 snapshot.data!;
+
                                             // Return an empty Container when the item does not exist.
                                             if (snapshot.data!.isEmpty) {
                                               return Container();
@@ -1498,6 +1522,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                 }
                                 List<Table7Record> containerTable7RecordList =
                                     snapshot.data!;
+
                                 // Return an empty Container when the item does not exist.
                                 if (snapshot.data!.isEmpty) {
                                   return Container();
@@ -1578,6 +1603,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                               List<Table7Record>
                                                   columnTable7RecordList =
                                                   snapshot.data!;
+
                                               // Return an empty Container when the item does not exist.
                                               if (snapshot.data!.isEmpty) {
                                                 return Container();
@@ -1595,6 +1621,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                               ?.newOrderList
                                                               .toList() ??
                                                           [];
+
                                                   return Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -1664,6 +1691,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                             List<Table7Record>
                                                 iconTable7RecordList =
                                                 snapshot.data!;
+
                                             // Return an empty Container when the item does not exist.
                                             if (snapshot.data!.isEmpty) {
                                               return Container();
@@ -1732,6 +1760,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                 }
                                 List<Table8Record> containerTable8RecordList =
                                     snapshot.data!;
+
                                 // Return an empty Container when the item does not exist.
                                 if (snapshot.data!.isEmpty) {
                                   return Container();
@@ -1812,6 +1841,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                               List<Table8Record>
                                                   columnTable8RecordList =
                                                   snapshot.data!;
+
                                               // Return an empty Container when the item does not exist.
                                               if (snapshot.data!.isEmpty) {
                                                 return Container();
@@ -1829,6 +1859,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                               ?.newOrderList
                                                               .toList() ??
                                                           [];
+
                                                   return Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -1898,6 +1929,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                             List<Table8Record>
                                                 iconTable8RecordList =
                                                 snapshot.data!;
+
                                             // Return an empty Container when the item does not exist.
                                             if (snapshot.data!.isEmpty) {
                                               return Container();
@@ -1966,6 +1998,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                 }
                                 List<Table9Record> containerTable9RecordList =
                                     snapshot.data!;
+
                                 // Return an empty Container when the item does not exist.
                                 if (snapshot.data!.isEmpty) {
                                   return Container();
@@ -2046,6 +2079,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                               List<Table9Record>
                                                   columnTable9RecordList =
                                                   snapshot.data!;
+
                                               // Return an empty Container when the item does not exist.
                                               if (snapshot.data!.isEmpty) {
                                                 return Container();
@@ -2063,6 +2097,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                               ?.newOrderList
                                                               .toList() ??
                                                           [];
+
                                                   return Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -2132,6 +2167,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                             List<Table9Record>
                                                 iconTable9RecordList =
                                                 snapshot.data!;
+
                                             // Return an empty Container when the item does not exist.
                                             if (snapshot.data!.isEmpty) {
                                               return Container();
@@ -2200,6 +2236,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                 }
                                 List<Table10Record> containerTable10RecordList =
                                     snapshot.data!;
+
                                 // Return an empty Container when the item does not exist.
                                 if (snapshot.data!.isEmpty) {
                                   return Container();
@@ -2280,6 +2317,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                               List<Table10Record>
                                                   columnTable10RecordList =
                                                   snapshot.data!;
+
                                               // Return an empty Container when the item does not exist.
                                               if (snapshot.data!.isEmpty) {
                                                 return Container();
@@ -2297,6 +2335,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                               ?.newOrderList
                                                               .toList() ??
                                                           [];
+
                                                   return Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -2366,6 +2405,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                             List<Table10Record>
                                                 iconTable10RecordList =
                                                 snapshot.data!;
+
                                             // Return an empty Container when the item does not exist.
                                             if (snapshot.data!.isEmpty) {
                                               return Container();
@@ -2435,6 +2475,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                 }
                                 List<Table11Record> containerTable11RecordList =
                                     snapshot.data!;
+
                                 // Return an empty Container when the item does not exist.
                                 if (snapshot.data!.isEmpty) {
                                   return Container();
@@ -2515,6 +2556,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                               List<Table11Record>
                                                   columnTable11RecordList =
                                                   snapshot.data!;
+
                                               // Return an empty Container when the item does not exist.
                                               if (snapshot.data!.isEmpty) {
                                                 return Container();
@@ -2532,6 +2574,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                               ?.newOrderList
                                                               .toList() ??
                                                           [];
+
                                                   return Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -2601,6 +2644,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                             List<Table11Record>
                                                 iconTable11RecordList =
                                                 snapshot.data!;
+
                                             // Return an empty Container when the item does not exist.
                                             if (snapshot.data!.isEmpty) {
                                               return Container();
@@ -2670,6 +2714,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                 }
                                 List<Table12Record> containerTable12RecordList =
                                     snapshot.data!;
+
                                 // Return an empty Container when the item does not exist.
                                 if (snapshot.data!.isEmpty) {
                                   return Container();
@@ -2750,6 +2795,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                               List<Table12Record>
                                                   columnTable12RecordList =
                                                   snapshot.data!;
+
                                               // Return an empty Container when the item does not exist.
                                               if (snapshot.data!.isEmpty) {
                                                 return Container();
@@ -2767,6 +2813,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                               ?.newOrderList
                                                               .toList() ??
                                                           [];
+
                                                   return Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -2836,6 +2883,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                             List<Table12Record>
                                                 iconTable12RecordList =
                                                 snapshot.data!;
+
                                             // Return an empty Container when the item does not exist.
                                             if (snapshot.data!.isEmpty) {
                                               return Container();

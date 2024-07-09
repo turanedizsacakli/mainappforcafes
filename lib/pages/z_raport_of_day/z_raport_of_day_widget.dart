@@ -142,6 +142,7 @@ class _ZRaportOfDayWidgetState extends State<ZRaportOfDayWidget> {
                                 }
                                 List<ExOrderRecord> columnExOrderRecordList =
                                     snapshot.data!;
+
                                 return Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -208,6 +209,7 @@ class _ZRaportOfDayWidgetState extends State<ZRaportOfDayWidget> {
                                                     List<ExOrderRecord>
                                                         checkboxExOrderRecordList =
                                                         snapshot.data!;
+
                                                     // Return an empty Container when the item does not exist.
                                                     if (snapshot
                                                         .data!.isEmpty) {
@@ -471,6 +473,7 @@ class _ZRaportOfDayWidgetState extends State<ZRaportOfDayWidget> {
                                                               columnExOrderRecord
                                                                   .orderList
                                                                   .toList();
+
                                                           return SingleChildScrollView(
                                                             child: Column(
                                                               mainAxisSize:

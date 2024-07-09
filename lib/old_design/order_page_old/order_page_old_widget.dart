@@ -131,6 +131,7 @@ class _OrderPageOldWidgetState extends State<OrderPageOldWidget> {
                         );
                       }
                       List<OrderRecord> columnOrderRecordList = snapshot.data!;
+
                       return Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -183,6 +184,7 @@ class _OrderPageOldWidgetState extends State<OrderPageOldWidget> {
                                                 final orderListSeen =
                                                     columnOrderRecord.orderList
                                                         .toList();
+
                                                 return InkWell(
                                                   splashColor:
                                                       Colors.transparent,

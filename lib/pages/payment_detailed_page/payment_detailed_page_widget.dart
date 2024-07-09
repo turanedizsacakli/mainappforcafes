@@ -10,9 +10,31 @@ class PaymentDetailedPageWidget extends StatefulWidget {
   const PaymentDetailedPageWidget({
     super.key,
     this.tableDetails,
+    this.forTable2,
+    this.forTable3,
+    this.forTable4,
+    this.forTable5,
+    this.forTable6,
+    this.forTable7,
+    this.forTable8,
+    this.forTable9,
+    this.forTable10,
+    this.forTable11,
+    this.forTable12,
   });
 
   final Table1Record? tableDetails;
+  final Table2Record? forTable2;
+  final Table3Record? forTable3;
+  final Table4Record? forTable4;
+  final Table5Record? forTable5;
+  final Table6Record? forTable6;
+  final Table7Record? forTable7;
+  final Table8Record? forTable8;
+  final Table9Record? forTable9;
+  final Table10Record? forTable10;
+  final Table11Record? forTable11;
+  final Table12Record? forTable12;
 
   @override
   State<PaymentDetailedPageWidget> createState() =>
@@ -221,6 +243,7 @@ class _PaymentDetailedPageWidgetState extends State<PaymentDetailedPageWidget> {
                                                 .tableDetails?.orderList
                                                 .toList() ??
                                             [];
+
                                         return SingleChildScrollView(
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
