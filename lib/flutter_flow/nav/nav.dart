@@ -157,10 +157,65 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/detailedPaymentPage',
           asyncParams: {
             'tableDetails': getDoc(['table1'], Table1Record.fromSnapshot),
+            'forTable2': getDoc(['table2'], Table2Record.fromSnapshot),
+            'forTable3': getDoc(['table3'], Table3Record.fromSnapshot),
+            'forTable4': getDoc(['table4'], Table4Record.fromSnapshot),
+            'forTable5': getDoc(['table5'], Table5Record.fromSnapshot),
+            'forTable6': getDoc(['table6'], Table6Record.fromSnapshot),
+            'forTable7': getDoc(['table7'], Table7Record.fromSnapshot),
+            'forTable8': getDoc(['table8'], Table8Record.fromSnapshot),
+            'forTable9': getDoc(['table9'], Table9Record.fromSnapshot),
+            'forTable10': getDoc(['table10'], Table10Record.fromSnapshot),
+            'forTable11': getDoc(['table11'], Table11Record.fromSnapshot),
+            'forTable12': getDoc(['table12'], Table12Record.fromSnapshot),
           },
           builder: (context, params) => PaymentDetailedPageWidget(
             tableDetails: params.getParam(
               'tableDetails',
+              ParamType.Document,
+            ),
+            forTable2: params.getParam(
+              'forTable2',
+              ParamType.Document,
+            ),
+            forTable3: params.getParam(
+              'forTable3',
+              ParamType.Document,
+            ),
+            forTable4: params.getParam(
+              'forTable4',
+              ParamType.Document,
+            ),
+            forTable5: params.getParam(
+              'forTable5',
+              ParamType.Document,
+            ),
+            forTable6: params.getParam(
+              'forTable6',
+              ParamType.Document,
+            ),
+            forTable7: params.getParam(
+              'forTable7',
+              ParamType.Document,
+            ),
+            forTable8: params.getParam(
+              'forTable8',
+              ParamType.Document,
+            ),
+            forTable9: params.getParam(
+              'forTable9',
+              ParamType.Document,
+            ),
+            forTable10: params.getParam(
+              'forTable10',
+              ParamType.Document,
+            ),
+            forTable11: params.getParam(
+              'forTable11',
+              ParamType.Document,
+            ),
+            forTable12: params.getParam(
+              'forTable12',
               ParamType.Document,
             ),
           ),

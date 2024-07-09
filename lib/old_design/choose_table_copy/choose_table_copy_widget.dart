@@ -128,6 +128,7 @@ class _ChooseTableCopyWidgetState extends State<ChooseTableCopyWidget> {
                             }
                             List<TablesRecord> columnTablesRecordList =
                                 snapshot.data!;
+
                             // Return an empty Container when the item does not exist.
                             if (snapshot.data!.isEmpty) {
                               return Container();
@@ -214,6 +215,7 @@ class _ChooseTableCopyWidgetState extends State<ChooseTableCopyWidget> {
                                             List<TablesRecord>
                                                 textTablesRecordList =
                                                 snapshot.data!;
+
                                             // Return an empty Container when the item does not exist.
                                             if (snapshot.data!.isEmpty) {
                                               return Container();
@@ -341,6 +343,7 @@ class _ChooseTableCopyWidgetState extends State<ChooseTableCopyWidget> {
                                       }
                                       List<TablesRecord> textTablesRecordList =
                                           snapshot.data!;
+
                                       // Return an empty Container when the item does not exist.
                                       if (snapshot.data!.isEmpty) {
                                         return Container();
@@ -468,6 +471,7 @@ class _ChooseTableCopyWidgetState extends State<ChooseTableCopyWidget> {
                                       }
                                       List<TablesRecord> textTablesRecordList =
                                           snapshot.data!;
+
                                       // Return an empty Container when the item does not exist.
                                       if (snapshot.data!.isEmpty) {
                                         return Container();

@@ -112,6 +112,7 @@ class _PaymentPageCopyWidgetState extends State<PaymentPageCopyWidget> {
                             }
                             List<TablesRecord> containerTablesRecordList =
                                 snapshot.data!;
+
                             // Return an empty Container when the item does not exist.
                             if (snapshot.data!.isEmpty) {
                               return Container();
@@ -394,6 +395,7 @@ class _PaymentPageCopyWidgetState extends State<PaymentPageCopyWidget> {
                                                   List<TablesRecord>
                                                       tlTextTablesRecordList =
                                                       snapshot.data!;
+
                                                   // Return an empty Container when the item does not exist.
                                                   if (snapshot.data!.isEmpty) {
                                                     return Container();

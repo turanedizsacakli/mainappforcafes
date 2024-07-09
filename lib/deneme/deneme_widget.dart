@@ -80,6 +80,7 @@ class _DenemeWidgetState extends State<DenemeWidget> {
                     child: Builder(
                       builder: (context) {
                         final list = FFAppState().deneme.toList();
+
                         return Column(
                           mainAxisSize: MainAxisSize.max,
                           children: List.generate(list.length, (listIndex) {
@@ -195,6 +196,7 @@ class _DenemeWidgetState extends State<DenemeWidget> {
                     child: Builder(
                       builder: (context) {
                         final list2 = FFAppState().dene2.toList();
+
                         return Column(
                           mainAxisSize: MainAxisSize.max,
                           children: List.generate(list2.length, (list2Index) {
@@ -310,6 +312,7 @@ class _DenemeWidgetState extends State<DenemeWidget> {
                     child: Builder(
                       builder: (context) {
                         final den = FFAppState().deneme.toList();
+
                         return Column(
                           mainAxisSize: MainAxisSize.max,
                           children: List.generate(den.length, (denIndex) {

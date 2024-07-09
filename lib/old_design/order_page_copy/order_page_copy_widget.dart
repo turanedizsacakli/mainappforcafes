@@ -131,6 +131,7 @@ class _OrderPageCopyWidgetState extends State<OrderPageCopyWidget> {
                         );
                       }
                       List<OrderRecord> columnOrderRecordList = snapshot.data!;
+
                       return Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -183,6 +184,7 @@ class _OrderPageCopyWidgetState extends State<OrderPageCopyWidget> {
                                                 final orderListSeen =
                                                     columnOrderRecord.orderList
                                                         .toList();
+
                                                 return InkWell(
                                                   splashColor:
                                                       Colors.transparent,

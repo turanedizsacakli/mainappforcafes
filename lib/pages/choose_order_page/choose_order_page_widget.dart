@@ -447,6 +447,7 @@ class _ChooseOrderPageWidgetState extends State<ChooseOrderPageWidget>
                                                   List<MealsRecord>
                                                       columnMealsRecordList =
                                                       snapshot.data!;
+
                                                   return SingleChildScrollView(
                                                     child: Column(
                                                       mainAxisSize:
@@ -732,6 +733,7 @@ class _ChooseOrderPageWidgetState extends State<ChooseOrderPageWidget>
                                                                   FFAppState()
                                                                       .newOrderList
                                                                       .toList();
+
                                                               return Column(
                                                                 mainAxisSize:
                                                                     MainAxisSize
@@ -777,6 +779,7 @@ class _ChooseOrderPageWidgetState extends State<ChooseOrderPageWidget>
                                                                   FFAppState()
                                                                       .pageCost
                                                                       .toList();
+
                                                               return Column(
                                                                 mainAxisSize:
                                                                     MainAxisSize
@@ -866,7 +869,8 @@ class _ChooseOrderPageWidgetState extends State<ChooseOrderPageWidget>
                                               if (FFAppState().tableNumber ==
                                                   1) {
                                                 if (widget.table1 != null) {
-                                                  await widget.table1!.reference
+                                                  await widget
+                                                      .table1!.reference
                                                       .delete();
                                                   FFAppState().order =
                                                       (List<String> var1,
@@ -1056,7 +1060,8 @@ class _ChooseOrderPageWidgetState extends State<ChooseOrderPageWidget>
                                                   if (FFAppState()
                                                           .tableNumber ==
                                                       3) {
-                                                    if (widget.table3 != null) {
+                                                    if (widget.table3 !=
+                                                        null) {
                                                       await widget
                                                           .table3!.reference
                                                           .delete();
@@ -1374,7 +1379,8 @@ class _ChooseOrderPageWidgetState extends State<ChooseOrderPageWidget>
                                                             6) {
                                                           if (widget.table6 !=
                                                               null) {
-                                                            await widget.table6!
+                                                            await widget
+                                                                .table6!
                                                                 .reference
                                                                 .delete();
                                                             FFAppState()
@@ -1483,7 +1489,8 @@ class _ChooseOrderPageWidgetState extends State<ChooseOrderPageWidget>
                                                           if (FFAppState()
                                                                   .tableNumber ==
                                                               7) {
-                                                            if (widget.table7 !=
+                                                            if (widget
+                                                                    .table7 !=
                                                                 null) {
                                                               await widget
                                                                   .table7!

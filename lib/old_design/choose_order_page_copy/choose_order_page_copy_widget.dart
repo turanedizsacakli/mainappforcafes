@@ -78,6 +78,7 @@ class _ChooseOrderPageCopyWidgetState extends State<ChooseOrderPageCopyWidget>
           );
         }
         List<TablesRecord> chooseOrderPageCopyTablesRecordList = snapshot.data!;
+
         // Return an empty Container when the item does not exist.
         if (snapshot.data!.isEmpty) {
           return Container();
@@ -502,6 +503,7 @@ class _ChooseOrderPageCopyWidgetState extends State<ChooseOrderPageCopyWidget>
                                                       List<MealsRecord>
                                                           columnMealsRecordList =
                                                           snapshot.data!;
+
                                                       return SingleChildScrollView(
                                                         child: Column(
                                                           mainAxisSize:
@@ -789,6 +791,7 @@ class _ChooseOrderPageCopyWidgetState extends State<ChooseOrderPageCopyWidget>
                                                                       FFAppState()
                                                                           .order
                                                                           .toList();
+
                                                                   return Column(
                                                                     mainAxisSize:
                                                                         MainAxisSize
@@ -832,6 +835,7 @@ class _ChooseOrderPageCopyWidgetState extends State<ChooseOrderPageCopyWidget>
                                                                       FFAppState()
                                                                           .pageCost
                                                                           .toList();
+
                                                                   return Column(
                                                                     mainAxisSize:
                                                                         MainAxisSize
@@ -919,6 +923,7 @@ class _ChooseOrderPageCopyWidgetState extends State<ChooseOrderPageCopyWidget>
                                                       List<TablesRecord>
                                                           textTablesRecordList =
                                                           snapshot.data!;
+
                                                       // Return an empty Container when the item does not exist.
                                                       if (snapshot
                                                           .data!.isEmpty) {

@@ -142,6 +142,7 @@ class _ZRaportOfDayCopyWidgetState extends State<ZRaportOfDayCopyWidget> {
                                 }
                                 List<ExOrderRecord> columnExOrderRecordList =
                                     snapshot.data!;
+
                                 return Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -339,6 +340,7 @@ class _ZRaportOfDayCopyWidgetState extends State<ZRaportOfDayCopyWidget> {
                                                                 columnExOrderRecord
                                                                     .orderList
                                                                     .toList();
+
                                                             return SingleChildScrollView(
                                                               child: Column(
                                                                 mainAxisSize:

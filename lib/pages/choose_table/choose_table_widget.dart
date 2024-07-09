@@ -128,6 +128,7 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                               }
                               List<Table1Record> columnTable1RecordList =
                                   snapshot.data!;
+
                               final columnTable1Record =
                                   columnTable1RecordList.isNotEmpty
                                       ? columnTable1RecordList.first
@@ -284,6 +285,7 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                               }
                               List<Table2Record> columnTable2RecordList =
                                   snapshot.data!;
+
                               final columnTable2Record =
                                   columnTable2RecordList.isNotEmpty
                                       ? columnTable2RecordList.first
@@ -440,6 +442,7 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                               }
                               List<Table3Record> columnTable3RecordList =
                                   snapshot.data!;
+
                               final columnTable3Record =
                                   columnTable3RecordList.isNotEmpty
                                       ? columnTable3RecordList.first
@@ -605,6 +608,7 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                               }
                               List<Table4Record> columnTable4RecordList =
                                   snapshot.data!;
+
                               final columnTable4Record =
                                   columnTable4RecordList.isNotEmpty
                                       ? columnTable4RecordList.first
@@ -761,6 +765,7 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                               }
                               List<Table5Record> columnTable5RecordList =
                                   snapshot.data!;
+
                               final columnTable5Record =
                                   columnTable5RecordList.isNotEmpty
                                       ? columnTable5RecordList.first
@@ -917,6 +922,7 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                               }
                               List<Table6Record> columnTable6RecordList =
                                   snapshot.data!;
+
                               final columnTable6Record =
                                   columnTable6RecordList.isNotEmpty
                                       ? columnTable6RecordList.first
@@ -1082,6 +1088,7 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                               }
                               List<Table7Record> columnTable7RecordList =
                                   snapshot.data!;
+
                               final columnTable7Record =
                                   columnTable7RecordList.isNotEmpty
                                       ? columnTable7RecordList.first
@@ -1238,6 +1245,7 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                               }
                               List<Table8Record> columnTable8RecordList =
                                   snapshot.data!;
+
                               final columnTable8Record =
                                   columnTable8RecordList.isNotEmpty
                                       ? columnTable8RecordList.first
@@ -1394,6 +1402,7 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                               }
                               List<Table9Record> columnTable9RecordList =
                                   snapshot.data!;
+
                               final columnTable9Record =
                                   columnTable9RecordList.isNotEmpty
                                       ? columnTable9RecordList.first
@@ -1559,6 +1568,7 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                               }
                               List<Table10Record> columnTable10RecordList =
                                   snapshot.data!;
+
                               final columnTable10Record =
                                   columnTable10RecordList.isNotEmpty
                                       ? columnTable10RecordList.first
@@ -1716,6 +1726,7 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                               }
                               List<Table11Record> columnTable11RecordList =
                                   snapshot.data!;
+
                               final columnTable11Record =
                                   columnTable11RecordList.isNotEmpty
                                       ? columnTable11RecordList.first
@@ -1873,6 +1884,7 @@ class _ChooseTableWidgetState extends State<ChooseTableWidget> {
                               }
                               List<Table12Record> columnTable12RecordList =
                                   snapshot.data!;
+
                               final columnTable12Record =
                                   columnTable12RecordList.isNotEmpty
                                       ? columnTable12RecordList.first
